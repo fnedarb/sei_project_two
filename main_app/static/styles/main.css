@@ -3,6 +3,7 @@ body {
     width: 100%;
     height: 100;
     font-family: 'Sora', sans-serif;
+    padding-top: 100px;
 }
 
 .navbar-custom {
@@ -21,4 +22,74 @@ body {
 
 .nav-title {
     margin-top: 5px;
+}
+
+.cities {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    display: block;
+}
+
+.cities h1{
+    margin-left: 5%;
+    margin-bottom: 0;
+}
+
+.cities hr {
+    width: 92%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.top-cities-container {
+    width: 92%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.city-card {
+    margin: 12.5px;
+    display: block;
+    width: 350px;
+    height: 300px;
+    background-color: white;
+    box-shadow: 0 0 5px 1px lightgrey;
+    border-radius: 10px;
+}
+
+.city-image {
+    width: 100%;
+    height: 225px;
+    border-radius: 10px 10px 0px 0px
+}
+
+.city-image img {
+    width: 100%;
+    height: 225px;
+    border-radius: 10px 10px 0px 0px
+}
+
+.city-content {
+    width: 95%;
+    height: 60px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.city-content h6 {
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+.city-content p{
+    font-size: 12.5px;
+    margin-left: 2px;
+    font-style: italic;
+    margin-top: -5px;
+    opacity: 0.9;
 }
