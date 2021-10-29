@@ -5,14 +5,14 @@ from django.db.models.fields.related import ForeignKey
 
 # Create your models here.
 
-class Profile(models.Model):
+# class Profile(models.Model):
 
-    user = models.OneToOneField(User, on_delete = models.CASCADE)
-    posts = models.IntegerField(default=0)
-    city = ForeignKey(City, on_delete = models.CASCADE, related_name = "cities")
-    age = models.IntegerField(default=18)
-    avatar = models.URLField(max_length = 300)
-    events_attending = models.ManyToManyField(Event)
+#     user = models.OneToOneField(User, on_delete = models.CASCADE)
+#     posts = models.IntegerField(default=0)
+#     city = ForeignKey(City, on_delete = models.CASCADE, related_name = "cities")
+#     age = models.IntegerField(default=18)
+#     avatar = models.URLField(max_length = 300)
+#     events_attending = models.ManyToManyField(Event)
 
 # class Event(models.Model):
 
