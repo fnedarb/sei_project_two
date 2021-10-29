@@ -24,6 +24,10 @@ body {
     margin-top: 5px;
 }
 
+#user {
+    color: #3E3E3E;
+}
+
 .home-image {
     margin-top: 0px;
     width: 100%;
@@ -34,6 +38,7 @@ body {
     background-repeat: no-repeat;
     margin-bottom: 30px;
 }
+
 .cities {
     width: 100%;
     height: auto;
@@ -195,4 +200,14 @@ body {
 #person {
     font-size: 15px;
     margin-left: -10px;
+}
+
+#signinbtn {
+    background-color: #D446C1;
+    color: white;
+}
+
+#signupbtn {
+    background-color: white;
+    color:#D446C1;
 }
