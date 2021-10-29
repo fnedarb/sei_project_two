@@ -3,7 +3,7 @@ body {
     width: 100%;
     height: 100;
     font-family: 'Sora', sans-serif;
-    padding-top: 100px;
+    padding-top: 75px;
 }
 
 .navbar-custom {
@@ -24,6 +24,16 @@ body {
     margin-top: 5px;
 }
 
+.home-image {
+    margin-top: 0px;
+    width: 100%;
+    height: 500px;
+    background-image: url('https://media.cntraveler.com/photos/5d090bc1244f6a7ae3031eb3/5:4/w_3330,h_2664,c_limit/Chicago_GettyImages-1065188752.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 30px;
+}
 .cities {
     width: 100%;
     height: auto;
