@@ -39,6 +39,32 @@ body {
     margin-bottom: 30px;
 }
 
+.home-image-text {
+    width: 65%;
+    margin: 0 auto;
+    padding-top: 185px;
+    margin-left: 20%;
+}
+
+.home-image-text h1 {
+    color:#F8DD74;
+    text-align: left;
+}
+
+.searchbar {
+    width: 100%;
+    height: auto;
+}
+
+.search {
+    width: 90%;
+    opacity: .9;
+    border-radius: 20px;
+    height: 30px;
+}
+
+
+
 .cities {
     width: 100%;
     height: auto;
