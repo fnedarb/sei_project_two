@@ -9,7 +9,8 @@ from django.contrib.auth.models import User
 from .models import City, Profile, Event, Post
 from django.db.models import Count, Q
 from django.http import HttpResponse
-
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 #@method_decorator(login_required, name='dispatch')
@@ -22,8 +23,14 @@ class Home(TemplateView):
         context["cities"] = City.objects.all()
         return context
 
+#@method_decorator(login_required, name='dispatch')
 class ProfileView(TemplateView):
+    model = Profile
     template_name='profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context[]
 
 class CityDetailView(TemplateView):
     model = City
@@ -45,3 +52,21 @@ class PostCreate(CreateView):
 
     def get_success_url(self):
         return reverse('city_view', kwargs={'pk': self.object.pk})
+
+
+class Signup(View):
+    
+    def get(self, request):
+        form = UserCreationForm()
+        context = {"form": form}
+        return render(request, " ", context) # Add path 
+    
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("home")
+        else:
+            context = {"form": form}
+            return render(request, " ", context) # Add path
