@@ -497,3 +497,17 @@ nav {
 .city-post-content p{
     margin-top: 15px;
 }
+
+
+.signup {
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.signup h1 {
+    text-align: center;
+    color: #3E3E3E;
+    margin-bottom: 20px;
+}
+
