@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %} 
+{% block content %}
+<div class="profile-page">
+    <div class="profile-header">
+        <div class="image-name-city">
+            <img src="https://forrestperkins.com/wp-content/uploads/2017/11/avatar.jpg" alt="user-image">
+            <h4>Braden Fink</h4>
+            <h6>Frederick, MD - October 2021</h6>
+        </div>
+        <div class="profile-edit-btn">
+            <button id="edit-profile" class="btn">Edit Profile</button>
+        </div>
+    </div>
+    <div class="profile-posts">
+        <h1 class="profile-top-posts">Your Posts</h1>
+        <hr>
+        <div class="profile-post-container">
+            <div class="profile-post-card">
+                <div class="profile-post-image">
+                    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2l0eSUyMGxhbmRzY2FwZXxlbnwwfHwwfHw%3D&w=1000&q=80" alt="post-image">
+                </div>
+                <div class="profile-post-content">
+                    <div class="profile-post-name-city">
+                        <h6>Post Name</h6>
+                        <p id="profile-post-city">Chicago, IL</p>
+                    </div>
+                    <div class="profile-post-action">
+                        <a class="edit-btn" href="#"><i class="bi bi-pencil-fill"></i></a>
+                        <a class="delete-btn" href="#"><i class="bi bi-trash-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="events">
+        <h1 class="homepage-events">Events You're Attending</h1>
+        <hr>
+        <div class="top-events-container">
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://www.expatica.com/app/uploads/sites/17/2020/11/rsz_austrian_etiquette_of_dating-1024x684.jpg" alt="fun">
+                </div>
+                <div class="event-content">
+                    <div class="event-title-homepage">
+                        <h6 class="event-name-homepage">Thirst Thursday</h6>
+                        <p>New York City, NY</p>
+                    </div>
+                    <div class="event-info-homepage">
+                        <div class="person-date">
+                            <p id="person"><i class="bi bi-person"></i></p>
+                            <p class="person-count">24</p>
+                        </div>
+                        <p id="date">11/21/21</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
