@@ -75,7 +75,7 @@ class PostUpdate(UpdateView):
     success_url = "/profile/"
 
 class PostDelete(DeleteView):
-    model = Profile
+    model = Post
     template_name = " "
     success_url = "/profile/"
 
