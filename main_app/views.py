@@ -19,4 +19,3 @@ class ProfileView(TemplateView):
 
 class CityDetailView(TemplateView):
     template_name='city_view.html'
-
