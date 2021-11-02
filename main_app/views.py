@@ -19,8 +19,12 @@ class Home(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["events"] = Event.objects.all()
-        context["cities"] = City.objects.all()
+        name = self.request.GET.get("name")
+        if name != None:
+            context["events"] = Event.objects.filter(
+                name__icontains = name)
+            context["cities"] = City.objects.filter(
+                name__icontains = name)
         return context
 
 #@method_decorator(login_required, name='dispatch')
@@ -41,6 +45,17 @@ class CityDetailView(TemplateView):
         context["events"] = Event.objects.all()
         context["posts"] = Post.objects.all()
         return context
+
+class EventDetailView(TemplateView):
+    model = Event
+    template_name='' # Add path
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["events"] = Event.objects.all()
+        return context
+
+
 
 class PostCreate(CreateView):
     model = Post
