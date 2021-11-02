@@ -10,7 +10,7 @@ nav {
     height: 75px;
 }
 
-.navbar-custom {
+.navbar-custom, .modal-header {
     background-color: #F8DD74;
     color: #D446C1;
 }
