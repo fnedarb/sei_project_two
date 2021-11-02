@@ -68,20 +68,15 @@ class PostCreate(CreateView):
     def get_success_url(self):
         return reverse('city_view', kwargs={'pk': self.object.pk})
 
+class PostUpdate(UpdateView):
+    model = Post
+    fields = ['title', 'photo', 'content']
+    template_name = " "
+    success_url = "/profile/"
 
-class Signup(View):
-    
-    def get(self, request):
-        form = UserCreationForm()
-        context = {"form": form}
-        return render(request, " ", context) # Add path 
-    
-    def post(self, request):
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect("home")
-        else:
-            context = {"form": form}
-            return render(request, " ", context) # Add path
+class PostDelete(DeleteView):
+    model = Profile
+    template_name = " "
+    success_url = "/profile/"
+
+
