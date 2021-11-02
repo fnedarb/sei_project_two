@@ -10,7 +10,9 @@ from .models import City, Profile, Event, Post
 from django.db.models import Count, Q
 from django.http import HttpResponse
 
+
 # Create your views here.
+#@method_decorator(login_required, name='dispatch')
 class Home(TemplateView):
     template_name='home.html'
 
@@ -24,4 +26,22 @@ class ProfileView(TemplateView):
     template_name='profile.html'
 
 class CityDetailView(TemplateView):
+    model = City
     template_name='city_view.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["events"] = Event.objects.all()
+        context["posts"] = Post.objects.all()
+        return context
+
+class PostCreate(CreateView):
+    model = Post
+    fields = ['title','date','image','content','upvotes']
+    #template_name = ''
+
+    def form_valid(self, form):
+        form.instance.profile = self.request.profile # maybe user
+
+    def get_success_url(self):
+        return reverse('city_view', kwargs={'pk': self.object.pk})
