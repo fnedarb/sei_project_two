@@ -255,6 +255,11 @@ nav {
     color:#D446C1;
 }
 
+#profilesavechanges {
+    background-color: #D446C1;
+    color: white;
+}
+
 .profile-page {
     width: 100%;
     height: 100%;
