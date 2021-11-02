@@ -7,3 +7,6 @@ class Home(TemplateView):
 
 class ProfileView(TemplateView):
     template_name='profile.html'
+
+class CityDetailView(TemplateView):
+    template_name='city_view.html'
