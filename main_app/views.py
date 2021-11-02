@@ -11,6 +11,7 @@ from .models import City, Profile, Event, Post
 from django.db.models import Count, Q
 from django.http import HttpResponse
 from django import forms
+from .forms import ProfileForm
 
 # Create your views here.
 class Home(TemplateView):
@@ -25,16 +26,21 @@ class CityDetailView(TemplateView):
 
 class Signup(View):
     def get(self, request):
-        form = UserCreationForm()
+        form = ProfileForm()
         context = {"form": form}
         return render (request, "registration/signup.html", context)
 
     def post(self, request):
-        form = UserCreationForm(request.POST)
+        form = ProfileForm(request.POST)
         if form.is_valid():
             user = form.save()
+            user.refresh_from_db()
+            user.user.city = form.cleaned_data.get('city')
+            user.user.age = form.cleaned_data.get('age')
+            user.user.avatar = form.cleaned_data.get('avatar')
+            user.save()
             login(request, user)
-            return redirect ('restaurants')
+            return redirect ('profile')
         else:
             context = {"form": form}
             return render(request, 'registration/signup.html', context)
