@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar fixed-top border-bottom border-light navbar-expand-lg navbar-custom">
         <div class="container-fluid">
-            <a class="image navbar-brand font-weight-bold navbar-text" href="#">
+            <a class="image navbar-brand font-weight-bold navbar-text" href="/">
                 <!-- <img src="#" alt="Wayfarer" id="main-logo" /> -->
                 <h4 class="navbar-text nav-title">Wayfarer</h4>
             </a>
@@ -36,10 +36,37 @@
                     </li>
                 </ul>
                 {% if user.is_authenticated %}
-                    {% for prof in profile %}
-                    <img class="navbar-avatar" src="{{prof.avatar}}" alt="profile-pic">
-                    {% endfor %}
-                <h6 class="mt-2 mx-2"id="user">Hello, {{user.first_name}}</h6>
+                    
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                {% for prof in profile %}
+                                <img class="navbar-avatar" src="{{prof.avatar}}" alt="profile-pic">
+                                {% endfor %}
+                            </li>
+                            <li class="nav-item my-2">
+                                <a class="nav-link" href="/profile/">{{user.first_name}}'s Profile</a>
+                            </li>
+                            <li class="nav-item my-2">
+                                <a class="nav-link" href="/accounts/logout/">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+
+                <!-- Code for dropdown - not working right -->
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Hello, {{user.first_name}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="profile/">My Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="account/logout">Log Out</a>
+                    </div>
+                </li> -->
                 
                 {% else %}
                 <form id="sign-in" class="form-inline my-1 my-lg-0" action="{% url 'login' %}">
