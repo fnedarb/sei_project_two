@@ -572,3 +572,9 @@ nav {
     color:#3E3E3E;
     margin-bottom: 10px;
 }
+
+.nav-link {
+    color:#3E3E3E;
+    font-size: small;
+    margin-left: 10px;
+}
