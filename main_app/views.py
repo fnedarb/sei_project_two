@@ -25,7 +25,8 @@ class Home(TemplateView):
         name = self.request.GET.get("name")
         context["events"] = Event.objects.all()[:3]
         context["cities"] = City.objects.all()[:3]
-        context["profile"] = Profile.objects.filter(user=self.request.user)
+        if (self.request.user.is_authenticated):
+            context["profile"] = Profile.objects.filter(user=self.request.user)
         return context
 
 #@method_decorator(login_required, name='dispatch')
@@ -36,7 +37,8 @@ class ProfileView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["events"] = Event.objects.filter(users_attending__id=self.request.user.id)
         context["posts"] = Post.objects.filter(id=self.request.user.id)
-        context["profile"] = Profile.objects.filter(user=self.request.user)
+        if (self.request.user.is_authenticated):
+            context["profile"] = Profile.objects.filter(user=self.request.user)
         return context
 
 class CityDetailView(DetailView):
