@@ -4,9 +4,11 @@
 <div class="profile-page">
     <div class="profile-header">
         <div class="image-name-city">
-            <img src="https://forrestperkins.com/wp-content/uploads/2017/11/avatar.jpg" alt="user-image">
-            <h4>Braden Fink</h4>
-            <h6>Frederick, MD - October 2021</h6>
+            {% for prof in profile %}
+            <img src="{{prof.avatar}}" alt="user-image">
+            <h4>{{user.first_name}} {{user.last_name}}</h4>
+            <h6>{{prof.city.name}}, {{prof.city.state}} - {{user.date_joined.month}}/{{user.date_joined.day}}/{{user.date_joined.year}}</h6>
+            {% endfor %}
         </div>
         <div class="profile-edit-btn">
             <button id="edit-profile" class="btn">Edit Profile</button>

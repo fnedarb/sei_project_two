@@ -295,6 +295,8 @@ nav {
 .image-name-city img {
     border-radius: 50%;
     height: 250px;
+    width: 250px;
+    object-fit: cover;
 }
 
 .image-name-city h4 {
