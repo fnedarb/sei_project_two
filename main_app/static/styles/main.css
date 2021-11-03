@@ -10,7 +10,7 @@ nav {
     height: 75px;
 }
 
-.navbar-custom, .modal-header {
+.navbar-custom, .modal-header, .profileeditformwrapper {
     background-color: #F8DD74;
     color: #D446C1;
 }
@@ -31,6 +31,7 @@ nav {
 
 .nav-title {
     margin-top: 5px;
+    font-weight: 800;
 }
 
 #user {
@@ -290,6 +291,21 @@ nav {
 #profilesavechanges {
     background-color: #D446C1;
     color: white;
+}
+
+.profileupdatebtn {
+    border-radius: 3px;
+    background-color: #D446C1;
+    color: white;
+}
+
+#profileEditForm{
+    padding: 20px;
+}
+
+.profileeditformwrapper {
+    width: 50%;
+    margin: 0 auto;
 }
 
 .profile-page {
@@ -568,4 +584,14 @@ nav {
     padding-bottom: 20px;
     font-style: italic;
     font-weight: lighter;
+}
+
+.nav-item .dropdown {
+    color:#3E3E3E;
+    margin-bottom: 10px;
+}
+
+.nav-link {
+    color:#3E3E3E;
+    font-size: small;
 }
