@@ -266,6 +266,10 @@ nav {
     margin-top: -17.5px;
 }
 
+#date-city-page {
+    margin-top: -10px;
+}
+
 #person {
     font-size: 15px;
     margin-left: -10px;
@@ -487,32 +491,23 @@ nav {
 .post-user-image-name {
     width: 25%;
     display: block;
-    margin: 10px;
-    margin-right: 20px;
+    margin: 5px;
     text-align: center;
 }
 
 .post-user-image-name img{
-    height: 100px;
-    border-radius: 50%;
-}
-
-.post-user-image-name p {
-    font-style: italic;
-    font-weight: lighter;
-    font-size: 13px;
-}
-
-.post-user-image-name h6 {
-    padding-top: 3px;
-    margin-bottom: 0px;
+    width: 100%;
+    height: 155px;
+    border-radius: 10px;
 }
 
 .city-post-content {
-    margin: 3px;
+    margin-top: 5px;
+    height: 155px;
     background-color:#FCEEBA;
     padding: 10px;
     border-radius: 10px;
+    width: 100%;
 }
 
 .city-post-content h6{
@@ -521,6 +516,12 @@ nav {
 
 .city-post-content p{
     margin-top: 15px;
+}
+
+.city-post-content .user-info{
+    margin-top: -10px;
+    font-size: 12.5px;
+    font-style: italic;
 }
 
 

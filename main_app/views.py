@@ -45,11 +45,11 @@ class CityDetailView(DetailView):
     model = City
     template_name='city_view.html'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context["events"] = Event.objects.filter(city=self.objects.pk)
-    #     context["posts"] = Post.objects.filter(city=self.objects.pk)
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if (self.request.user.is_authenticated):
+            context["profile"] = Profile.objects.filter(user=self.request.user)
+        return context
 
 class Signup(View):
     def get(self, request):
