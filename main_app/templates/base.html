@@ -36,16 +36,20 @@
                     </li>
                 </ul>
                 {% if user.is_authenticated %}
-                    {% for prof in profile %}
-                    <img class="navbar-avatar ms-auto" src="{{prof.avatar}}" alt="profile-pic">
-                    {% endfor %}
+                    
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
+                                {% for prof in profile %}
+                                <img class="navbar-avatar" src="{{prof.avatar}}" alt="profile-pic">
+                                {% endfor %}
+                            </li>
+                            <li class="nav-item my-2">
                                 <a class="nav-link" href="/profile/">{{user.first_name}}'s Profile</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item my-2">
                                 <a class="nav-link" href="/accounts/logout/">Log Out</a>
                             </li>
                         </ul>
