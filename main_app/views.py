@@ -25,6 +25,7 @@ class Home(TemplateView):
         name = self.request.GET.get("name")
         context["events"] = Event.objects.all()
         context["cities"] = City.objects.all()
+        context["profile"] = Profile.objects.filter(user=self.request.user)
         return context
 
 #@method_decorator(login_required, name='dispatch')

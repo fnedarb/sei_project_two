@@ -15,7 +15,7 @@ nav {
     color: #D446C1;
 }
 
-.navbar-collapse, .navbar-nav, .container-fluid {
+.navbar-collapse, .navbar-nav, .container-fluid, .navbar-item {
     background-color: #F8DD74;
     color: white;
 }
@@ -35,6 +35,13 @@ nav {
 
 #user {
     color: #3E3E3E;
+}
+
+.navbar-avatar {
+    height: 45px;
+    border-radius: 50%;
+    width: 45px;
+    object-fit: cover;
 }
 
 .home-image {
