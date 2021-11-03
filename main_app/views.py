@@ -49,8 +49,6 @@ class ProfileUpdate(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        form = ProfileUpdateForm
-        context = {"form": form}
         if (self.request.user.is_authenticated):
             context["profile"] = Profile.objects.filter(user=self.request.user)
         return context
