@@ -11,7 +11,7 @@ from .models import City, Profile, Event, Post
 from django.db.models import Count, Q, Sum
 from django.http import HttpResponse
 from django import forms
-from .forms import ProfileForm
+from .forms import ProfileForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
@@ -37,6 +37,20 @@ class ProfileView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["events"] = Event.objects.filter(users_attending__id=self.request.user.id)
         context["posts"] = Post.objects.filter(profile=self.request.user)
+        if (self.request.user.is_authenticated):
+            context["profile"] = Profile.objects.filter(user=self.request.user)
+        return context
+
+class ProfileUpdate(UpdateView):
+    model = Profile
+    fields = ['city', 'avatar']
+    template_name = "profileupdate.html"
+    success_url = "/profile"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        form = ProfileUpdateForm
+        context = {"form": form}
         if (self.request.user.is_authenticated):
             context["profile"] = Profile.objects.filter(user=self.request.user)
         return context

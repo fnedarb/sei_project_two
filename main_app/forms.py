@@ -13,3 +13,7 @@ class ProfileForm(UserCreationForm):
     class Meta:
         model = User
         fields = ("username", "first_name", "last_name", "email", "password1", "password2", "city", "age", "avatar")
+
+class ProfileUpdateForm(forms.Form):
+    city = forms.ModelChoiceField(queryset=City.objects.all())
+    avatar = forms.CharField(max_length=1000, label='Profile Picture')
