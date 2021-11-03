@@ -36,9 +36,9 @@
                     </li>
                 </ul>
                 {% if user.is_authenticated %}
-                {% for prof in profile %}
-                <img class="navbar-avatar" src="{{prof.avatar}}" alt="profile-pic">
-                {% endfor %}
+                    {% for prof in profile %}
+                    <img class="navbar-avatar" src="{{prof.avatar}}" alt="profile-pic">
+                    {% endfor %}
                 <h6 class="mt-2 mx-2"id="user">Hello, {{user.first_name}}</h6>
                 
                 {% else %}

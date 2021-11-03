@@ -4,6 +4,7 @@ from django.db.models.fields import IntegerField
 from django.db.models.fields.related import ForeignKey
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.views.generic import dates
 
 # Create your models here.
 
@@ -43,6 +44,7 @@ class Event(models.Model):
     address = models.TextField(max_length = 2000)
     users_attending = models.ManyToManyField(User, null=True)
     image = models.URLField(max_length = 300, null=True)
+    date=models.DateField(null=True)
 
     def __str__(self):
         return self.name
