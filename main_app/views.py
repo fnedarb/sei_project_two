@@ -36,7 +36,7 @@ class ProfileView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["events"] = Event.objects.filter(users_attending__id=self.request.user.id)
-        context["posts"] = Post.objects.filter(id=self.request.user.id)
+        context["posts"] = Post.objects.filter(profile=self.request.user)
         if (self.request.user.is_authenticated):
             context["profile"] = Profile.objects.filter(user=self.request.user)
         return context
@@ -45,11 +45,12 @@ class CityDetailView(DetailView):
     model = City
     template_name='city_view.html'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context["events"] = Event.objects.filter(city=self.objects.pk)
-    #     context["posts"] = Post.objects.filter(city=self.objects.pk)
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["posts"] = Post.objects.filter(city=self.object.pk).order_by('-date')
+        if (self.request.user.is_authenticated):
+            context["profile"] = Profile.objects.filter(user=self.request.user)
+        return context
 
 class Signup(View):
     def get(self, request):
@@ -84,16 +85,16 @@ class EventDetailView(TemplateView):
 
 
 
-class PostCreate(CreateView):
-    model = Post
-    fields = ['title','date','image','content','upvotes']
-    #template_name = ''
-
-    def form_valid(self, form):
-        form.instance.profile = self.request.profile # maybe user
-
-    def get_success_url(self):
-        return reverse('city_view', kwargs={'pk': self.object.pk})
+class PostCreate(View):
+    def post(self, request, pk):
+        profile = self.request.user
+        title = request.POST.get('postTitle')
+        city = City.objects.get(pk=pk)
+        content = request.POST.get('postContent')
+        upvotes = 0
+        photo = request.POST.get('postImage')
+        Post.objects.create(profile=profile, title=title, city=city, content=content, upvotes=upvotes, photo=photo)
+        return redirect('city-detail', pk=pk)
 
 class PostUpdate(UpdateView):
     model = Post
