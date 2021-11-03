@@ -107,6 +107,10 @@ nav {
     align-items: flex-start;
 }
 
+.top-cities-container a{
+    text-decoration: none;
+}
+
 .city-card {
     margin: 12.5px;
     display: block;
@@ -175,6 +179,10 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+}
+
+.top-events-container a{
+    text-decoration: none;
 }
 
 .event-card {

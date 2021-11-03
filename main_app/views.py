@@ -23,11 +23,8 @@ class Home(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         name = self.request.GET.get("name")
-        if name != None:
-            context["events"] = Event.objects.filter(
-                name__icontains = name)
-            context["cities"] = City.objects.filter(
-                name__icontains = name)
+        context["events"] = Event.objects.all()
+        context["cities"] = City.objects.all()
         return context
 
 #@method_decorator(login_required, name='dispatch')
@@ -37,7 +34,8 @@ class ProfileView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context[]
+        context["events"] = Event.objects.filter(users_attending=self.request.user)
+        context["post"] = Post.objects.filter(user=self.request.user)
 
 class CityDetailView(TemplateView):
     model = City
@@ -45,8 +43,8 @@ class CityDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["events"] = Event.objects.all()
-        context["posts"] = Post.objects.all()
+        context["events"] = Event.objects.filter(city=self.object.pk)
+        context["posts"] = Post.objects.filter(city=self.objects.pk)
         return context
 
 class Signup(View):
@@ -77,7 +75,7 @@ class EventDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["events"] = Event.objects.all()
+        context["events"] = Event.objects.filter(city=self.object.pk)
         return context
 
 
