@@ -4,9 +4,11 @@
 <div class="profile-page">
     <div class="profile-header">
         <div class="image-name-city">
-            <img src="https://forrestperkins.com/wp-content/uploads/2017/11/avatar.jpg" alt="user-image">
-            <h4>Braden Fink</h4>
-            <h6>Frederick, MD - October 2021</h6>
+            {% for prof in profile %}
+            <img src="{{prof.avatar}}" alt="user-image">
+            <h4>{{user.first_name}} {{user.last_name}}</h4>
+            <h6>{{prof.city.name}}, {{prof.city.state}} - {{user.date_joined.month}}/{{user.date_joined.day}}/{{user.date_joined.year}}</h6>
+            {% endfor %}
         </div>
         <div class="profile-edit-btn">
             <button id="edit-profile" class="btn" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
@@ -53,17 +55,19 @@
         </div>
       </div>
     <div class="profile-posts">
-        <h1 class="profile-top-posts">Your Posts</h1>
+        <h1 class="profile-top-posts">Posts</h1>
         <hr>
         <div class="profile-post-container">
+            {% for post in post %}
+            <a href="#">
             <div class="profile-post-card">
                 <div class="profile-post-image">
-                    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2l0eSUyMGxhbmRzY2FwZXxlbnwwfHwwfHw%3D&w=1000&q=80" alt="post-image">
+                    <img src="{{post.photo}}" alt="post-image">
                 </div>
                 <div class="profile-post-content">
                     <div class="profile-post-name-city">
-                        <h6>Post Name</h6>
-                        <p id="profile-post-city">Chicago, IL</p>
+                        <h6>{{post.name}}</h6>
+                        <p id="profile-post-city">{{post.city.name}}, {{post.city.state}}</p>
                     </div>
                     <div class="profile-post-action">
                         <a class="edit-btn" href="#"><i class="bi bi-pencil-fill"></i></a>
@@ -71,30 +75,40 @@
                     </div>
                 </div>
             </div>
+            </a>
+            {% empty %}
+            <h2 class="no-posts">No Posts to Show</h2>
+            {% endfor %}
         </div>
     </div>
     <div class="events">
-        <h1 class="homepage-events">Events You're Attending</h1>
+        <h1 class="homepage-events">Events Attending</h1>
         <hr>
         <div class="top-events-container">
+            {% for event in events %}
+            <a href="">
             <div class="event-card">
                 <div class="event-image">
-                    <img src="https://www.expatica.com/app/uploads/sites/17/2020/11/rsz_austrian_etiquette_of_dating-1024x684.jpg" alt="fun">
+                    <img src="{{event.image}}" alt="fun">
                 </div>
                 <div class="event-content">
                     <div class="event-title-homepage">
-                        <h6 class="event-name-homepage">Thirst Thursday</h6>
-                        <p>New York City, NY</p>
+                        <h6 class="event-name-homepage">{{event.name}}</h6>
+                        <p>{{event.city.name}}, {{event.city.state}}</p>
                     </div>
                     <div class="event-info-homepage">
                         <div class="person-date">
                             <p id="person"><i class="bi bi-person"></i></p>
-                            <p class="person-count">24</p>
+                            <p class="person-count">{{event.users_attending.all.count}}</p>
                         </div>
                         <p id="date">11/21/21</p>
                     </div>
                 </div>
             </div>
+            </a>
+            {% empty %}
+            <h2 class="no-posts">Not Attending any Events</h2>
+            {% endfor %}
         </div>
     </div>
 </div>
