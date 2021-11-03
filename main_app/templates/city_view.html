@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
 {% block title %}City{% endblock %} 
 {% block content %}
+<style>
+    .city-image-page {
+    margin-top: 0px;
+    width: 100%;
+    height: 500px;
+    background-image: linear-gradient(to top, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
+    url('{{city.image}}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 30px;
+}
+</style>
 
 <div class="all-content">
     <div class="city-image-page">
@@ -12,7 +25,7 @@
         <h1 class="homepage-events">Top Events</h1>
         <hr>
         <div class="top-events-container">
-            {% for event in events %}
+            {% for event in city.event_city.all %}
             <div class="event-card">
                 <div class="event-image">
                     <img src="{{event.image}}" alt="fun">
@@ -20,14 +33,13 @@
                 <div class="event-content">
                     <div class="event-title-homepage">
                         <h6 class="event-name-homepage">{{event.name}}</h6>
-                        <p></p>
+                        <p id="date-city-page">{{event.date.month}}/{{event.date.day}}/{{event.date.year}}</p>
                     </div>
                     <div class="event-info-homepage">
                         <div class="person-date">
                             <p id="person"><i class="bi bi-person"></i></p>
-                            <p class="person-count">{{event.users_attending.count.all}}</p>
+                            <p class="person-count">{{event.users_attending.count}}</p>
                         </div>
-                        <p id="date">11/21/21</p>
                     </div>
                 </div>
             </div>
@@ -35,18 +47,20 @@
         </div>
     </div>
     <div class="city-posts">
-        <h1 class="city-post-title">Posts</h1>
+        <div class="posts-add">
+            <h1 class="city-post-title">Posts</h1>
+            <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Add Post</button>
+        </div>
         <hr>
         <div class="city-posts-container">
-            {% for post in city.posts.all %}
+            {% for post in posts %}
             <div class="city-post-card">
                 <div class="post-user-image-name">
-                    <img src="{{post.profile.avatar}}" alt="user-image">
-                    <h6>{{post.profile.first_name}}</h6>
-                    <p>{{post.profile.city.name}}, {{post.profile.city.state}}</p>
+                    <img src="{{post.photo}}" alt="post-image">
                 </div>
                 <div class="city-post-content">
                     <h6>{{post.title}}</h6>
+                    <p class="user-info">{{post.profile.first_name}} {{post.profile.last_name}} - Posted {{post.date.month}}/{{post.date.day}}/{{post.date.year}}</p>
                     <p>{{post.content}}</p>
                 </div>
             </div>
@@ -56,5 +70,37 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Add a Post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'post-create' city.pk %}" method="post">
+            {% csrf_token %}
+                <div class="form-group mt-2 mb-4">
+                    <label for="postImage">Photo</label>
+                    <input type="text" class="form-control" id="postImage" name="postImage" placeholder="Image URL">
+                </div>
+                <div class="form-group my-4">
+                    <label for="postTitle">Title</label>
+                    <input type="text" class="form-control" id="postTitle" name="postTitle" placeholder="Post Title">
+                </div>
+                <div class="form-group my-4">
+                    <label for="postContent">Content</label>
+                    <textarea class="form-control" id="postContent" name="postContent" rows="7"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Create Post</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
