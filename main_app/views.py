@@ -8,7 +8,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import City, Profile, Event, Post
-from django.db.models import Count, Q
+from django.db.models import Count, Q, Sum
 from django.http import HttpResponse
 from django import forms
 from .forms import ProfileForm
@@ -26,6 +26,7 @@ class Home(TemplateView):
         context["events"] = Event.objects.all()
         context["cities"] = City.objects.all()
         context["profile"] = Profile.objects.filter(user=self.request.user)
+        context["count"] = Event.total_attend
         return context
 
 #@method_decorator(login_required, name='dispatch')
@@ -35,8 +36,9 @@ class ProfileView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["events"] = Event.objects.filter(users_attending__id=self.request.user.id)
-        context["post"] = Post.objects.filter(id=self.request.user.id)
+        context["posts"] = Post.objects.filter(id=self.request.user.id)
         context["profile"] = Profile.objects.filter(user=self.request.user)
+        context["count"] = Event.total_attend
         return context
 
 class CityDetailView(TemplateView):
