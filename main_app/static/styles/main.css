@@ -31,6 +31,7 @@ nav {
 
 .nav-title {
     margin-top: 5px;
+    font-weight: 800;
 }
 
 #user {
@@ -553,4 +554,9 @@ nav {
     padding-bottom: 20px;
     font-style: italic;
     font-weight: lighter;
+}
+
+.nav-item .dropdown {
+    color:#3E3E3E;
+    margin-bottom: 10px;
 }
