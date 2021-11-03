@@ -47,10 +47,6 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
-    def total_attend(self):
-        queryset = self.users_attending.all().aggregate(total_attend=models.Sum('users_attending'))
-        return queryset['total_attend']
-
 
 
 class Post(models.Model):

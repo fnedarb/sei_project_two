@@ -26,7 +26,6 @@ class Home(TemplateView):
         context["events"] = Event.objects.all()
         context["cities"] = City.objects.all()
         context["profile"] = Profile.objects.filter(user=self.request.user)
-        context["count"] = Event.total_attend
         return context
 
 #@method_decorator(login_required, name='dispatch')
@@ -38,7 +37,6 @@ class ProfileView(TemplateView):
         context["events"] = Event.objects.filter(users_attending__id=self.request.user.id)
         context["posts"] = Post.objects.filter(id=self.request.user.id)
         context["profile"] = Profile.objects.filter(user=self.request.user)
-        context["count"] = Event.total_attend
         return context
 
 class CityDetailView(TemplateView):
