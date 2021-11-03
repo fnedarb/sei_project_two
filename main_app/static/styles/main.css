@@ -461,11 +461,27 @@ nav {
     color: #3E3E3E;
 }
 
+.city-posts button{
+    margin-right: 5%;
+    margin-top: 3px;
+    margin-bottom: 0px;
+    background-color: #D446C1;
+    color: white;
+    height: 40px;
+}
+
 .city-posts hr {
     width: 92%;
     margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 0px;
+}
+
+.posts-add {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .city-post-container {
