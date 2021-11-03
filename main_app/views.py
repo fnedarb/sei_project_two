@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.base import TemplateView
-from django.views.generic import DeleteView
+from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views import View
 from django.urls import reverse
-from django.contrib.auth import login
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import City, Profile, Event, Post
-from django.db.models import Count, Q
+from django.db.models import Count, Q, Sum
 from django.http import HttpResponse
 from django import forms
 from .forms import ProfileForm
@@ -23,31 +23,31 @@ class Home(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         name = self.request.GET.get("name")
-        if name != None:
-            context["events"] = Event.objects.filter(
-                name__icontains = name)
-            context["cities"] = City.objects.filter(
-                name__icontains = name)
+        context["events"] = Event.objects.all()[:3]
+        context["cities"] = City.objects.all()[:3]
+        context["profile"] = Profile.objects.filter(user=self.request.user)
         return context
 
 #@method_decorator(login_required, name='dispatch')
 class ProfileView(TemplateView):
-    model = Profile
     template_name='profile.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context[]
+        context["events"] = Event.objects.filter(users_attending__id=self.request.user.id)
+        context["posts"] = Post.objects.filter(id=self.request.user.id)
+        context["profile"] = Profile.objects.filter(user=self.request.user)
+        return context
 
-class CityDetailView(TemplateView):
+class CityDetailView(DetailView):
     model = City
     template_name='city_view.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["events"] = Event.objects.all()
-        context["posts"] = Post.objects.all()
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context["events"] = Event.objects.filter(city=self.objects.pk)
+    #     context["posts"] = Post.objects.filter(city=self.objects.pk)
+    #     return context
 
 class Signup(View):
     def get(self, request):
@@ -77,7 +77,7 @@ class EventDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["events"] = Event.objects.all()
+        context["events"] = Event.objects.filter(city=self.object.pk)
         return context
 
 
