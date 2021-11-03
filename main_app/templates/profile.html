@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Profile{% endblock %} 
 {% block content %}
+
 <div class="profile-page">
     <div class="profile-header">
         <div class="image-name-city">
@@ -10,14 +11,19 @@
             <h6>{{prof.city.name}}, {{prof.city.state}} - Joined on {{user.date_joined.month}}/{{user.date_joined.day}}/{{user.date_joined.year}}</h6>
             {% endfor %}
         </div>
+        {% if user.is_authenticated %}
         <div class="profile-edit-btn">
-            <button id="edit-profile" class="btn" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+            <a href="/profile/{{user.pk}}/edit">
+                <button id="edit-profile" class="btn">Edit Profile</button>
+            </a>
         </div>
+        {% else %} 
+        {% endif %}
     </div>
-
+    <!-- ha ha this is so i can commit-->
     <!-- Edit Profile Modal -->
     
-    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -53,7 +59,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     <div class="profile-posts">
         <h1 class="profile-top-posts">Posts</h1>
         <hr>
