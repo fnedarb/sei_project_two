@@ -13,7 +13,9 @@
         </div>
         {% if user.is_authenticated %}
         <div class="profile-edit-btn">
-            <a href="/profile/{{user.pk}}/edit">
+            {% for prof in profile %}
+            <a href="/profile/{{prof.pk}}/edit/">
+            {% endfor %}
                 <button id="edit-profile" class="btn">Edit Profile</button>
             </a>
         </div>

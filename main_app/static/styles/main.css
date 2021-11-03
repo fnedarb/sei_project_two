@@ -595,3 +595,8 @@ nav {
     color:#3E3E3E;
     font-size: small;
 }
+
+.save-changes {
+    background-color: #D446C1;
+    color: white;
+}
