@@ -58,7 +58,7 @@
         <h1 class="profile-top-posts">Posts</h1>
         <hr>
         <div class="profile-post-container">
-            {% for post in post %}
+            {% for post in posts %}
             <a href="#">
             <div class="profile-post-card">
                 <div class="profile-post-image">
@@ -66,7 +66,7 @@
                 </div>
                 <div class="profile-post-content">
                     <div class="profile-post-name-city">
-                        <h6>{{post.name}}</h6>
+                        <h6>{{post.title}}</h6>
                         <p id="profile-post-city">{{post.city.name}}, {{post.city.state}}</p>
                     </div>
                     <div class="profile-post-action">
