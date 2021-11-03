@@ -8,7 +8,7 @@
             {% for prof in profile %}
             <img src="{{prof.avatar}}" alt="user-image">
             <h4>{{user.first_name}} {{user.last_name}}</h4>
-            <h6>{{prof.city.name}}, {{prof.city.state}} - {{user.date_joined.month}}/{{user.date_joined.day}}/{{user.date_joined.year}}</h6>
+            <h6>{{prof.city.name}}, {{prof.city.state}} - Joined on {{user.date_joined.month}}/{{user.date_joined.day}}/{{user.date_joined.year}}</h6>
             {% endfor %}
         </div>
         {% if user.is_authenticated %}
@@ -83,7 +83,7 @@
             </div>
             </a>
             {% empty %}
-            <h2 class="no-posts">No Posts to Show</h2>
+            <h6 class="no-posts">No Posts to Show</h6>
             {% endfor %}
         </div>
     </div>
@@ -113,7 +113,7 @@
             </div>
             </a>
             {% empty %}
-            <h2 class="no-posts">Not Attending any Events</h2>
+            <h6 class="no-posts">Not Attending any Events</h6>
             {% endfor %}
         </div>
     </div>
