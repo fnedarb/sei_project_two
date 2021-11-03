@@ -47,6 +47,7 @@ class CityDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["posts"] = Post.objects.filter(city=self.object.pk).order_by('-date')
         if (self.request.user.is_authenticated):
             context["profile"] = Profile.objects.filter(user=self.request.user)
         return context
