@@ -690,6 +690,12 @@ nav {
     height: 40px;
 }
 
+#remove-attend {
+    background-color: #F8DD74;
+    color: #3E3E3E;
+    height: 40px;
+}
+
 /* Event Page - Users Attending */
 .event-users {
     width: 100%;
@@ -718,6 +724,7 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
     width: 100%;
 }
 

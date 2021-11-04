@@ -123,3 +123,13 @@ class PostDelete(DeleteView):
     success_url = "/profile/"
 
 
+class UserAttending(View):
+    def get(self, request, pk, user_pk):
+        user_pk = Profile.objects.get(user=self.request.user.pk)
+        print(user_pk)
+        attending = request.GET.get("attending")
+        if (attending == "remove"):
+            Event.objects.get(pk=pk).users_attending.remove(user_pk)
+        if (attending == "add"):
+            Event.objects.get(pk=pk).users_attending.add(user_pk)
+        return redirect('event-detail')

@@ -30,7 +30,13 @@
                 <h1>About This Event</h1>
             </div>
             <div class="event-attend">
-                <button id="attend" class="btn">I'm Going!</button>
+                {% for prof in profile %}
+                {% if prof in event.users_attending.all %}
+                <a href="/event/{{event.pk}}/user/{{user.pk}}?attending=remove" id="remove-attend" class="btn">Can't Go!</a>
+                {% else %}
+                <a href="/event/{{event.pk}}/user/{{user.pk}}?attending=add" id="attend" class="btn">I'm Going!</a>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
         <div class="event-full-details">
