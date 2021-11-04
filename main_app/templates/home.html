@@ -29,7 +29,7 @@
                 <a class="all-cities-button btn" href="{% url 'all-cities' %}">See All Cities</a>
             </div>
         </div>
-        <!-- <hr> -->
+        <hr>
         <div class="top-cities-container">
             {% for city in cities %}
             <a href="/city/{{city.pk}}">
@@ -46,6 +46,7 @@
             {% endfor %}
         </div>
     </div>
+    <br />
     <div class="events">
         <div class="see-all-events">
             <div class="all-events-header">
@@ -55,7 +56,7 @@
                 <a class="all-events-button btn" href="{% url 'all-events' %}">See All Events</a>
             </div>
         </div>
-        <!-- <hr> -->
+        <hr>
         <div class="top-events-container">
             {% for event in events %}
             <a href="/event/{{event.pk}}">

@@ -22,8 +22,8 @@
         </div>
     </div>
     <div class="events">
-        <h1 class="homepage-events">Top Events</h1>
-        <hr>
+        <h1 class="homepage-events">Upcoming Events</h1>
+        
         <div class="top-events-container">
             {% for event in city.event_city.all %}
             <a href="{% url 'event-detail' event.pk %}">
@@ -45,6 +45,9 @@
                 </div>
             </div>
             </a>
+            {% empty %}
+            
+            <h6 class="no-posts" id="no-events-city">No Events to Show</h6>
             {% endfor %}
         </div>
     </div>
@@ -53,7 +56,7 @@
             <h1 class="city-post-title">Posts</h1>
             <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Add Post</button>
         </div>
-        <hr>
+        
         <div class="city-posts-container">
             {% for post in posts %}
             <div class="city-post-card">
@@ -67,7 +70,8 @@
                 </div>
             </div>
             {% empty %}
-            <h2 class="no-posts">No Posts to Show</h2>
+            
+            <h6 class="no-posts" id="no-posts-city">No Posts to Show</h6>
             {% endfor %}
         </div>
     </div>

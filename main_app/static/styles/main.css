@@ -502,7 +502,6 @@ nav {
     padding-bottom: 20px;
     font-style: italic;
     font-weight: lighter;
-    text-align: center;
 }
 
 .nav-item .dropdown {
@@ -704,7 +703,6 @@ nav {
     width: 100%;
     margin-top: -40px;
     background-color: #F8DD74;
-    margin-bottom: 50px;
     padding-top: 25px;
     padding-bottom: 50px;
     border-radius: 10px 10px 0px 0px;
@@ -827,6 +825,25 @@ nav {
     background-position: center;
     background-repeat: no-repeat;
     margin-bottom: 30px;
+}
+
+#no-posts-text {
+    text-align: left;
+    margin-left: 50px;
+}
+/* bad solution here - check on it */
+
+#no-posts-city {
+    margin-left: 50px;
+}
+
+.event-about {
+    color: #666666;
+}
+
+.seperator-line {
+    height: 2px;
+    background-color: #FCEEBA;
 }
 
 /* All Events Page */
