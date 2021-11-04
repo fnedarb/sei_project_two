@@ -76,8 +76,32 @@
                     <div class="profile-post-title-action">
                         <h6>{{post.title}}</h6>
                         <div class="edit-del-btn">
+                            {% if post.profile == user %}
                             <a href="/post/{{post.pk}}/edit/"><i id="post-edit" class="bi bi-pencil-fill"></i></a>
-                            <a href=""><i id="post-delete" class="bi bi-trash-fill"></i></a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#deletePost"><i id="post-delete" class="bi bi-trash-fill"></i></a>
+                            {% endif %}
+<!-- Delete Modal -->
+  <div class="modal fade" id="deletePost" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this post?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <form action="{% url 'delete-post' post.pk %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
                         </div>
                     </div>
                     <p class="profile-city-info">{{post.city.name}}, {{post.city.state}} - Posted {{post.date.month}}/{{post.date.day}}/{{post.date.year}}</p>
@@ -120,5 +144,6 @@
         </div>
     </div>
 </div>
+
 <!-- Another Change so I can push lol -->
 {% endblock %}
