@@ -11,6 +11,7 @@ nav {
     height: 75px;
 }
 
+
 .navbar-custom, .modal-header, .profileeditformwrapper {
     background-color: #F8DD74;
     color: #D446C1;
@@ -291,9 +292,28 @@ nav {
     color:#D446C1;
 }
 
+#signupviewbtn {
+    background-color: #D446C1;
+    color: white;
+}
+
+#postupdatebtn {
+    background-color: #D446C1;
+    color: white;
+}
+
+#profilesavechangesbtn {
+    background-color: #D446C1;
+    color: white;
+}
+
 #profilesavechanges {
     background-color: #D446C1;
     color: white;
+}
+
+.profile-link a {
+    text-decoration: none;
 }
 
 .profileupdatebtn {
@@ -487,6 +507,7 @@ nav {
     width: 75%;
     margin: 0 auto;
     margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .signup h1 {
@@ -775,10 +796,6 @@ nav {
 
 .all-cities-header h1{
     margin-left: 15px;
-}
-
-.city-post-content p{
-    margin-top: 15px;
 }
 
 .all-cities-see-all {
