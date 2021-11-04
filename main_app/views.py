@@ -162,17 +162,20 @@ class DeletePost(DeleteView):
     success_url= reverse_lazy('profile')
     template_name = "profile.html"
 
+
+
 class AllEvents(TemplateView):
-    template_name='all_events.html'
+    template_name='all-events.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         search = self.request.GET.get("search")
         if (search != None):
-            context["cities"] = City.objects.filter(Q(name__icontains=search)|Q(state__icontains=search)|Q(country__icontains=search))
+            context["events"] = Event.objects.filter(Q(name__icontains=search))
             context["header"] = f"Search for '{search}'"
         else:
             context["cities"] = City.objects.all()
+            context["events"] = Event.objects.all()
             context["header"] = "All Cities"
         if (self.request.user.is_authenticated):
             context["profile"] = Profile.objects.filter(user=self.request.user)

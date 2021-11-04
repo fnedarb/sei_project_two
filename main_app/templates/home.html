@@ -47,7 +47,14 @@
         </div>
     </div>
     <div class="events">
-        <h1 class="homepage-events">Top Events</h1>
+        <div class="see-all-events">
+            <div class="all-events-header">
+                <h1 class="homepage-city">Top Events</h1>
+            </div>
+            <div class="all-events-see-all">
+                <a class="all-events-button btn" href="{% url 'all-events' %}">See All Events</a>
+            </div>
+        </div>
         <hr>
         <div class="top-events-container">
             {% for event in events %}
