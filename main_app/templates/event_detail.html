@@ -53,7 +53,11 @@
     <div class="event-users">
         <div class="event-users-attending">
             <h1>Guest List</h1>
+            {% if event.users_attending.all.count == 1 %}
+            <h4>{{event.users_attending.all.count}} Person is Attending!</h4>
+            {% else %}
             <h4>{{event.users_attending.all.count}} People are Attending!</h4>
+            {% endif %}
             <div class="users-attending-container">
                 {% for profile in event.users_attending.all %}
                 <div class="users-attending-card">
