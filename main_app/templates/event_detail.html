@@ -30,7 +30,7 @@
                 <h1>About This Event</h1>
             </div>
             <div class="event-attend">
-                {% for prof in profile %}
+                {% for prof in currentprofile %}
                 {% if prof in event.users_attending.all %}
                 <a href="/event/{{event.pk}}/user/{{user.pk}}?attending=remove" id="remove-attend" class="btn">Can't Go!</a>
                 {% else %}
@@ -53,9 +53,14 @@
     <div class="event-users">
         <div class="event-users-attending">
             <h1>Guest List</h1>
+            {% if event.users_attending.all.count == 1 %}
+            <h4>{{event.users_attending.all.count}} Person is Attending!</h4>
+            {% else %}
             <h4>{{event.users_attending.all.count}} People are Attending!</h4>
+            {% endif %}
             <div class="users-attending-container">
                 {% for profile in event.users_attending.all %}
+                <a href="{% url 'profile' profile.pk %}">
                 <div class="users-attending-card">
                     <div class="user-attending-image">
                         <img src="{{profile.avatar}}" alt="">
@@ -65,6 +70,7 @@
                         <p>{{profile.city.name}}, {{profile.city.state}}</p>
                     </div>
                 </div>
+                </a>
                 {% endfor %}
             </div>
         </div>

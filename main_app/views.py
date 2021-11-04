@@ -27,31 +27,35 @@ class Home(TemplateView):
         context["events"] = Event.objects.all()[:3]
         context["cities"] = City.objects.all()[:3]
         if (self.request.user.is_authenticated):
-            context["profile"] = Profile.objects.filter(user=self.request.user)
+            context["currentprofile"] = Profile.objects.filter(user=self.request.user)
         return context
 
 #@method_decorator(login_required, name='dispatch')
-class ProfileView(TemplateView):
+class ProfileView(DetailView):
+    model = Profile
     template_name='profile.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["events"] = Event.objects.filter(users_attending__user=self.request.user)
-        context["posts"] = Post.objects.filter(profile=self.request.user).order_by('-date')
+        context["events"] = Event.objects.filter(users_attending__user=self.object.user)
+        context["posts"] = Post.objects.filter(profile=self.object.user).order_by('-date')
         if (self.request.user.is_authenticated):
-            context["profile"] = Profile.objects.filter(user=self.request.user)
+            context["currentprofile"] = Profile.objects.filter(user=self.request.user)
         return context
 
 class ProfileUpdate(UpdateView):
     model = Profile
     fields = ['city', 'avatar']
     template_name = "profileupdate.html"
-    success_url = "/profile"
+
+    def get_success_url(self):
+        pk = Profile.objects.get(user=self.request.user)
+        return reverse('profile', args=[str(pk.id)])
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if (self.request.user.is_authenticated):
-            context["profile"] = Profile.objects.filter(user=self.request.user)
+            context["currentprofile"] = Profile.objects.filter(user=self.request.user)
         return context
 
 class CityDetailView(DetailView):
@@ -62,7 +66,7 @@ class CityDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context["posts"] = Post.objects.filter(city=self.object.pk).order_by('-date')
         if (self.request.user.is_authenticated):
-            context["profile"] = Profile.objects.filter(user=self.request.user)
+            context["currentprofile"] = Profile.objects.filter(user=self.request.user)
         return context
 
 
@@ -74,7 +78,7 @@ class EventDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context["profiles"] = Profile.objects.all()
         if (self.request.user.is_authenticated):
-            context["profile"] = Profile.objects.filter(user=self.request.user)
+            context["currentprofile"] = Profile.objects.filter(user=self.request.user)
         return context
 
 
@@ -116,13 +120,15 @@ class PostUpdate(UpdateView):
     model = Post
     fields = ['title', 'photo', 'content']
     template_name = "post_update.html"
-    success_url = "/profile/"
+    
+    def get_success_url(self):
+        pk = Profile.objects.get(user=self.request.user)
+        return reverse('profile', args=[str(pk.id)])
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if (self.request.user.is_authenticated) and (self.request.user):
-            context["profile"] = Profile.objects.filter(user=self.request.user)
-
+            context["currentprofile"] = Profile.objects.filter(user=self.request.user)
         return context
 
 
@@ -153,27 +159,32 @@ class AllCities(TemplateView):
             context["cities"] = City.objects.all()
             context["header"] = "All Cities"
         if (self.request.user.is_authenticated):
-            context["profile"] = Profile.objects.filter(user=self.request.user)
+            context["currentprofile"] = Profile.objects.filter(user=self.request.user)
         return context
 
 
 class DeletePost(DeleteView):
     model = Post
-    success_url= reverse_lazy('profile')
     template_name = "profile.html"
 
+    def get_success_url(self):
+        pk = Profile.objects.get(user=self.request.user)
+        return reverse('profile', args=[str(pk.id)])
+
+
 class AllEvents(TemplateView):
-    template_name='all_events.html'
+    template_name='all-events.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         search = self.request.GET.get("search")
         if (search != None):
-            context["cities"] = City.objects.filter(Q(name__icontains=search)|Q(state__icontains=search)|Q(country__icontains=search))
+            context["events"] = Event.objects.filter(Q(name__icontains=search))
             context["header"] = f"Search for '{search}'"
         else:
             context["cities"] = City.objects.all()
+            context["events"] = Event.objects.all()
             context["header"] = "All Cities"
         if (self.request.user.is_authenticated):
-            context["profile"] = Profile.objects.filter(user=self.request.user)
+            context["currentprofile"] = Profile.objects.filter(user=self.request.user)
         return context
