@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}City{% endblock %} 
+{% block title %}{{city.name}}{% endblock %} 
 {% block content %}
 <style>
     .city-image-page {
@@ -26,6 +26,7 @@
         <hr>
         <div class="top-events-container">
             {% for event in city.event_city.all %}
+            <a href="{% url 'event-detail' event.pk %}">
             <div class="event-card">
                 <div class="event-image">
                     <img src="{{event.image}}" alt="fun">
@@ -43,6 +44,7 @@
                     </div>
                 </div>
             </div>
+            </a>
             {% endfor %}
         </div>
     </div>
@@ -84,15 +86,15 @@
             {% csrf_token %}
                 <div class="form-group mt-2 mb-4">
                     <label for="postImage">Photo</label>
-                    <input type="text" class="form-control" id="postImage" name="postImage" placeholder="Image URL">
+                    <input type="text" class="form-control" id="postImage" name="postImage" placeholder="Image URL" required>
                 </div>
                 <div class="form-group my-4">
                     <label for="postTitle">Title</label>
-                    <input type="text" class="form-control" id="postTitle" name="postTitle" placeholder="Post Title">
+                    <input type="text" class="form-control" id="postTitle" name="postTitle" placeholder="Post Title" required>
                 </div>
                 <div class="form-group my-4">
                     <label for="postContent">Content</label>
-                    <textarea class="form-control" id="postContent" name="postContent" rows="7"></textarea>
+                    <textarea class="form-control" id="postContent" name="postContent" rows="7" required></textarea>
                 </div>
             </div>
             <div class="modal-footer">

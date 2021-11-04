@@ -42,7 +42,7 @@ class Event(models.Model):
     venue = models.CharField(max_length = 200)
     description = models.TextField(max_length = 5000)
     address = models.TextField(max_length = 2000)
-    users_attending = models.ManyToManyField(User, null=True)
+    users_attending = models.ManyToManyField(Profile, null=True)
     image = models.URLField(max_length = 300, null=True)
     date=models.DateField(null=True)
 
@@ -53,7 +53,7 @@ class Event(models.Model):
 
 class Post(models.Model):
     profile = models.ForeignKey(User, on_delete = models.CASCADE)
-    title = models.CharField(max_length = 1000)
+    title = models.CharField(max_length = 200)
     city = models.ForeignKey(City, on_delete = models.CASCADE, related_name = "post_city")
     date = models.DateTimeField(auto_now_add=True)
     content = models.TextField(max_length = 5000)

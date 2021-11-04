@@ -23,7 +23,7 @@
     <div class="cities">
         <div class="see-all-cities">
             <div class="all-cities-header">
-                <h1 class="homepage-city">Top Cities</h1>
+                <h1 class="homepage-city">{{header}}</h1>
             </div>
             <div class="all-cities-see-all">
                 <a class="all-cities-button btn" href="{% url 'all-cities' %}">See All Cities</a>
@@ -40,34 +40,6 @@
                 <div class="city-content">
                     <h6 class="city-name-homepage">{{city.name}}</h6>
                     <p>{{city.state}}</p>
-                </div>
-            </div>
-            </a>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="events">
-        <h1 class="homepage-events">Top Events</h1>
-        <hr>
-        <div class="top-events-container">
-            {% for event in events %}
-            <a href="/event/{{event.pk}}">
-            <div class="event-card">
-                <div class="event-image">
-                    <img src="{{event.image}}" alt="{{event.name}}">
-                </div>
-                <div class="event-content">
-                    <div class="event-title-homepage">
-                        <h6 class="event-name-homepage">{{event.name}}</h6>
-                        <p>{{event.city.name}}, {{event.city.state}}</p>
-                    </div>
-                    <div class="event-info-homepage">
-                        <div class="person-date">
-                            <p id="person"><i class="bi bi-person"></i></p>
-                            <p class="person-count">{{event.users_attending.all.count}}</p>
-                        </div>
-                        <p id="date">{{event.date.month}}/{{event.date.day}}/{{event.date.year}}</p>
-                    </div>
                 </div>
             </div>
             </a>
