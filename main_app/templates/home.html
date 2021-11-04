@@ -44,7 +44,7 @@
         <hr>
         <div class="top-events-container">
             {% for event in events %}
-            <a href="#">
+            <a href="/event/{{event.pk}}">
             <div class="event-card">
                 <div class="event-image">
                     <img src="{{event.image}}" alt="{{event.name}}">

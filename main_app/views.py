@@ -64,6 +64,19 @@ class CityDetailView(DetailView):
             context["profile"] = Profile.objects.filter(user=self.request.user)
         return context
 
+
+class EventDetailView(DetailView):
+    model = Event
+    template_name='event_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["profiles"] = Profile.objects.all()
+        if (self.request.user.is_authenticated):
+            context["profile"] = Profile.objects.filter(user=self.request.user)
+        return context
+
+
 class Signup(View):
     def get(self, request):
         form = ProfileForm()
@@ -84,16 +97,6 @@ class Signup(View):
         else:
             context = {"form": form}
             return render(request, 'registration/signup.html', context)
-
-
-class EventDetailView(TemplateView):
-    model = Event
-    template_name='' # Add path
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["events"] = Event.objects.filter(city=self.object.pk)
-        return context
 
 
 

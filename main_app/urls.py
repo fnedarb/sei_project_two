@@ -7,5 +7,6 @@ urlpatterns = [
     path('profile/<int:pk>/edit/', views.ProfileUpdate.as_view(), name="profileupdate"),
     path('city/<int:pk>', views.CityDetailView.as_view(), name="city-detail"),
     path('accounts/signup/', views.Signup.as_view(), name="signup"),
-    path('city/<int:pk>/post/new', views.PostCreate.as_view(), name="post-create")
+    path('city/<int:pk>/post/new', views.PostCreate.as_view(), name="post-create"),
+    path('event/<int:pk>', views.EventDetailView.as_view(), name="event-detail"),
 ]
