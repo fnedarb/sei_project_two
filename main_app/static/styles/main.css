@@ -812,6 +812,8 @@ nav {
 .searchbar ::placeholder {
     font-size: smaller;
     font-weight: 300;
+}
+
 .all-cities-image {
     margin-top: 0px;
     width: 100%;
