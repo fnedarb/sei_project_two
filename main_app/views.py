@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls.base import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -117,12 +118,6 @@ class PostUpdate(UpdateView):
     template_name = " "
     success_url = "/profile/"
 
-class PostDelete(DeleteView):
-    model = Post
-    template_name = " "
-    success_url = "/profile/"
-
-
 
 class UserAttending(View):
     def get(self, request, pk, user_pk):
@@ -152,3 +147,9 @@ class AllCities(TemplateView):
         if (self.request.user.is_authenticated):
             context["profile"] = Profile.objects.filter(user=self.request.user)
         return context
+
+
+class DeletePost(DeleteView):
+    model = Post
+    success_url= reverse_lazy('profile')
+    template_name = "profile.html"
