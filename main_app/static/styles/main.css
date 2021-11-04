@@ -757,3 +757,31 @@ nav {
     font-weight: lighter;
     margin-top: -10px;
 }
+
+/* Styling All Cities Page - See All Cities Button */
+.see-all-cities {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 92%;
+    margin: 0 auto;
+}
+
+.all-cities-header{
+    width: 60%;
+}
+
+.all-cities-header h1{
+    margin-left: 15px;
+}
+
+.all-cities-see-all {
+    width: 135px;
+    margin-right: 15px;
+}
+
+.all-cities-button {
+    background-color: #D446C1;
+    color: white;
+}

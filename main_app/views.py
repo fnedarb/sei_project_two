@@ -22,7 +22,7 @@ class Home(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        name = self.request.GET.get("name")
+        search = self.request.GET.get("search")
         context["events"] = Event.objects.all()[:3]
         context["cities"] = City.objects.all()[:3]
         if (self.request.user.is_authenticated):
@@ -133,3 +133,19 @@ class UserAttending(View):
         if (attending == "add"):
             Event.objects.get(pk=pk).users_attending.add(user_pk)
         return redirect('event-detail', pk=pk)
+
+class AllCities(TemplateView):
+    template_name='all_cities.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        search = self.request.GET.get("search")
+        if (search != None):
+            context["cities"] = City.objects.filter(Q(name__icontains=search)|Q(state__icontains=search)|Q(country__icontains=search))
+            context["header"] = f"Search for '{search}'"
+        else:
+            context["cities"] = City.objects.all()
+            context["header"] = "All Cities"
+        if (self.request.user.is_authenticated):
+            context["profile"] = Profile.objects.filter(user=self.request.user)
+        return context
