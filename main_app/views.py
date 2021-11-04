@@ -132,4 +132,4 @@ class UserAttending(View):
             Event.objects.get(pk=pk).users_attending.remove(user_pk)
         if (attending == "add"):
             Event.objects.get(pk=pk).users_attending.add(user_pk)
-        return redirect('event-detail')
+        return redirect('event-detail', pk=pk)
