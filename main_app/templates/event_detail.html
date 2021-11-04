@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}{{event.name}}{% endblock %} 
+{% block content %}
+<style>
+    .city-image-page {
+    margin-top: 0px;
+    width: 100%;
+    height: 500px;
+    background-image: linear-gradient(to top, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
+    url('{{event.image}}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 30px;
+}
+</style>
+
+<div class="all-content">
+    <div class="city-image-page">
+        <div class="city-image-text">
+            <div class="event-city-state">
+                <h4>{{event.city.name}}, {{event.city.state}}</h4>
+            </div>
+            <h1>{{event.name}}</h1>
+        </div>
+    </div>
+    <div class="event-details">
+        <div class="event-intro">
+            <div class="about-event-intro">
+                <h1>About This Event</h1>
+            </div>
+            <div class="event-attend">
+                {% for prof in profile %}
+                {% if prof in event.users_attending.all %}
+                <a href="/event/{{event.pk}}/user/{{user.pk}}?attending=remove" id="remove-attend" class="btn">Can't Go!</a>
+                {% else %}
+                <a href="/event/{{event.pk}}/user/{{user.pk}}?attending=add" id="attend" class="btn">I'm Going!</a>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="event-full-details">
+            <div class="event-about">
+                <p>{{event.description}}</p>
+            </div>
+            <div class="event-date-time-venue">
+                <p><b>Date</b> </br>{{event.date.month}}/{{event.date.day}}/{{event.date.year}} </p>
+                <p><b>Location</b> </br>{{event.venue}}</p>
+                <p class="address">{{event.address}}<br>{{event.city.name}}, {{event.city.state}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="event-users">
+        <div class="event-users-attending">
+            <h1>Users Attending</h1>
+            <h4>{{event.users_attending.all.count}} People are Attending!</h4>
+            <div class="users-attending-container">
+                {% for profile in event.users_attending.all %}
+                <div class="users-attending-card">
+                    <div class="user-attending-image">
+                        <img src="{{profile.avatar}}" alt="">
+                    </div>
+                    <div class="user-attending-info">
+                        <h6>{{profile.user.first_name}} {{profile.user.last_name}}</h6>
+                        <p>{{profile.city.name}}, {{profile.city.state}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+        
+</div>
+
+{% endblock %}

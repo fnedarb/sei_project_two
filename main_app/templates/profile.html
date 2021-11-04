@@ -62,30 +62,31 @@
           </div>
         </div>
       </div> -->
-    <div class="profile-posts">
-        <h1 class="profile-top-posts">Posts</h1>
+      <div class="profile-city-posts">
+        <div class="posts-add">
+            <h1 class="profile-city-post-title">Posts</h1>
+        </div>
         <hr>
-        <div class="profile-post-container">
+        <div class="profile-city-posts-container">
             {% for post in posts %}
-            <a href="#">
-            <div class="profile-post-card">
-                <div class="profile-post-image">
+            <div class="profile-city-post-card">
+                <div class="profile-post-user-image-name">
                     <img src="{{post.photo}}" alt="post-image">
                 </div>
-                <div class="profile-post-content">
-                    <div class="profile-post-name-city">
+                <div class="profile-city-post-content">
+                    <div class="profile-post-title-action">
                         <h6>{{post.title}}</h6>
-                        <p id="profile-post-city">{{post.city.name}}, {{post.city.state}}</p>
+                        <div class="edit-del-btn">
+                            <a href=""><i id="post-edit" class="bi bi-pencil-fill"></i></a>
+                            <a href=""><i id="post-delete" class="bi bi-trash-fill"></i></a>
+                        </div>
                     </div>
-                    <div class="profile-post-action">
-                        <a class="edit-btn" href="#"><i class="bi bi-pencil-fill"></i></a>
-                        <a class="delete-btn" href="#"><i class="bi bi-trash-fill"></i></a>
-                    </div>
+                    <p class="profile-city-info">{{post.city.name}}, {{post.city.state}} - Posted {{post.date.month}}/{{post.date.day}}/{{post.date.year}}</p>
+                    <p>{{post.content}}</p>
                 </div>
             </div>
-            </a>
             {% empty %}
-            <h6 class="no-posts">No Posts to Show</h6>
+            <h2 class="no-posts">No Posts to Show</h2>
             {% endfor %}
         </div>
     </div>
@@ -94,7 +95,7 @@
         <hr>
         <div class="top-events-container">
             {% for event in events %}
-            <a href="">
+            <a href="{% url 'event-detail' event.pk %}">
             <div class="event-card">
                 <div class="event-image">
                     <img src="{{event.image}}" alt="fun">

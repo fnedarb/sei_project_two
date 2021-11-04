@@ -6,6 +6,7 @@ body {
     padding-top: 75px;
 }
 
+/* Navbar */
 nav {
     height: 75px;
 }
@@ -45,6 +46,7 @@ nav {
     object-fit: cover;
 }
 
+/* Home page */
 .home-image {
     margin-top: 0px;
     width: 100%;
@@ -96,7 +98,7 @@ nav {
 }
 
 
-
+/* City Cards */
 .cities {
     width: 100%;
     height: auto;
@@ -172,6 +174,7 @@ nav {
     opacity: 0.9;
 }
 
+/* Event cards */
 .events {
     width: 100%;
     height: auto;
@@ -351,10 +354,6 @@ nav {
     font-style: italic;
 }
 
-.profile-post-container a {
-    text-decoration: none;
-    color: #3E3E3E;
-}
 
 #edit-profile {
     background-color: #D446C1;
@@ -362,90 +361,6 @@ nav {
     margin-top: 25px;
 }
 
-.profile-posts {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    display: block;
-    margin-top: 30px;
-}
-
-.profile-posts h1 {
-    margin-left: 5%;
-    margin-bottom: 0;
-    color: #3E3E3E;
-    text-decoration: none;
-}
-
-.profile-posts hr {
-    width: 92%;
-    margin: 0 auto;
-    margin-top: 10px;
-    margin-bottom: 0px;
-}
-
-.profile-post-container {
-    width: 92%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
-
-
-.profile-post-card {
-    margin: 12.5px;
-    display: block;
-    width: 350px;
-    height: 300px;
-    background-color: white;
-    border-radius: 10px;
-    color: #3E3E3E;
-}
-
-.profile-post-image {
-    width: 100%;
-    height: 225px;
-    border-radius: 10px 10px 0px 0px;
-}
-
-.profile-post-image img {
-    width: 100%;
-    height: 225px;
-    border-radius: 10px 10px 10px 10px;
-}
-
-.profile-post-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 60px;
-    margin-top: 5px;
-    margin-left: 5px;
-}
-
-.profile-post-content h6 {
-    font-size: 20px;
-}
-
-.profile-post-content p{
-    font-size: 12.5px;
-    margin-left: 2px;
-    font-style: italic;
-    margin-top: -10px;
-    opacity: 0.9;
-}
-
-.profile-post-action {
-    text-decoration: none;
-    margin-top: -3px;
-    width: 50px;
-    margin-right: 8.5px;
-    text-align: right;
-}
 
 .edit-btn {
     text-decoration: none;
@@ -469,7 +384,7 @@ nav {
     font-size: 75px;
 }
 
-
+/* Posts on City Detail Page */
 .city-posts {
     width: 100%;
     height: auto;
@@ -558,15 +473,16 @@ nav {
 
 .city-post-content p{
     margin-top: 15px;
+    font-size: 15px;
 }
 
 .city-post-content .user-info{
     margin-top: -10px;
-    font-size: 12.5px;
+    font-size: 12px;
     font-style: italic;
 }
 
-
+/* NAVBAR Styling */
 .signup {
     width: 75%;
     margin: 0 auto;
@@ -597,6 +513,275 @@ nav {
 }
 
 .save-changes {
+    background-color: #D446C1;
+    color: white;
+}
+
+/* CSS for Post on Profile.html */
+.profile-city-posts {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    display: block;
+    background-color: white;
+    padding-top: 25px;
+    border-radius: 10px 10px 0px 0px;
+    padding-bottom: 30px;
+}
+
+.profile-city-posts h1{
+    margin-left: 5%;
+    margin-bottom: 0;
+    color: #3E3E3E;
+}
+
+
+.profile-city-posts hr {
+    width: 92%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+
+.profile-city-post-container {
+    width: 92%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.profile-city-post-card {
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    width: 92%;
+    height: 160px;
+    border-radius: 10px;
+    color: #3E3E3E;
+}
+
+.profile-post-user-image-name {
+    width: 25%;
+    display: block;
+    margin: 5px;
+    text-align: center;
+}
+
+.profile-post-user-image-name img{
+    width: 100%;
+    height: 155px;
+    border-radius: 10px;
+}
+
+.profile-city-post-content {
+    margin-top: 5px;
+    max-height: 155px;
+    min-height: fit-content;
+    background-color:#FCEEBA;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.profile-post-title-action {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.profile-city-post-content h6{
+    font-size: 20px;
+}
+
+.profile-city-post-content p{
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.profile-city-post-content .profile-city-info {
+    margin-top: -10px;
+    font-size: 12px;
+    font-style: italic;
+    width: 400px;
+}
+
+.edit-del-btn i{
+    text-decoration: none;
+    color: #3E3E3E;
+}
+
+#post-edit {
+    margin-right: 3px;
+}
+
+
+/* Event Page - Event Details */
+.event-city-state {
+    margin: 0 auto;
+    width: 42%;
+    text-align: left;
+    margin-bottom: -12.5px;
+}
+
+.event-city-state h4 {
+    font-size: 30px;
+    color: white;
+}
+
+.event-details {
+    width: 92%;
+    margin: 0 auto;
+}
+
+.event-details h1 {
+    color:#3E3E3E;
+}
+
+.event-full-details {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 50px;
+}
+
+.event-full-details .address {
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 15px;
+    margin-top: -20px;
+}
+
+.event-about {
+    width: 65%;
+    height: 200px;
+}
+
+.event-date-time-venue {
+    height: 200px;
+    width: 20%;
+    text-align: left;
+}
+
+.event-intro {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.about-event-intro {
+    width: 65%;
+}
+
+.event-attend {
+    width: 20%;
+    text-align: left;
+}
+
+#attend {
+    background-color: #D446C1;
+    color: white;
+    height: 40px;
+}
+
+#remove-attend {
+    background-color: #F8DD74;
+    color: #3E3E3E;
+    height: 40px;
+}
+
+/* Event Page - Users Attending */
+.event-users {
+    width: 100%;
+    margin-top: -40px;
+    background-color: #F8DD74;
+    margin-bottom: 50px;
+    padding-top: 25px;
+    padding-bottom: 50px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.event-users-attending {
+    width: 92%;
+    margin: 0 auto;
+}
+
+.event-users-attending h4{
+    font-style: italic;
+    font-weight: lighter;
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+
+.users-attending-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.users-attending-card {
+    width: 275px;
+    height: 275px;
+}
+
+.user-attending-image {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.user-attending-image img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-attending-info {
+    text-align: center;
+    margin-top: 7.5px;
+}
+
+.user-attending-info p {
+    font-style: italic;
+    font-weight: lighter;
+    margin-top: -10px;
+}
+
+/* Styling All Cities Page - See All Cities Button */
+.see-all-cities {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 92%;
+    margin: 0 auto;
+}
+
+.all-cities-header{
+    width: 60%;
+}
+
+.all-cities-header h1{
+    margin-left: 15px;
+}
+
+.all-cities-see-all {
+    width: 135px;
+    margin-right: 15px;
+}
+
+.all-cities-button {
     background-color: #D446C1;
     color: white;
 }

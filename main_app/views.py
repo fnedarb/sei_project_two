@@ -22,7 +22,7 @@ class Home(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        name = self.request.GET.get("name")
+        search = self.request.GET.get("search")
         context["events"] = Event.objects.all()[:3]
         context["cities"] = City.objects.all()[:3]
         if (self.request.user.is_authenticated):
@@ -35,8 +35,8 @@ class ProfileView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["events"] = Event.objects.filter(users_attending__id=self.request.user.id)
-        context["posts"] = Post.objects.filter(profile=self.request.user)
+        context["events"] = Event.objects.filter(users_attending__user=self.request.user)
+        context["posts"] = Post.objects.filter(profile=self.request.user).order_by('-date')
         if (self.request.user.is_authenticated):
             context["profile"] = Profile.objects.filter(user=self.request.user)
         return context
@@ -64,6 +64,19 @@ class CityDetailView(DetailView):
             context["profile"] = Profile.objects.filter(user=self.request.user)
         return context
 
+
+class EventDetailView(DetailView):
+    model = Event
+    template_name='event_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["profiles"] = Profile.objects.all()
+        if (self.request.user.is_authenticated):
+            context["profile"] = Profile.objects.filter(user=self.request.user)
+        return context
+
+
 class Signup(View):
     def get(self, request):
         form = ProfileForm()
@@ -84,16 +97,6 @@ class Signup(View):
         else:
             context = {"form": form}
             return render(request, 'registration/signup.html', context)
-
-
-class EventDetailView(TemplateView):
-    model = Event
-    template_name='' # Add path
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["events"] = Event.objects.filter(city=self.object.pk)
-        return context
 
 
 
@@ -120,3 +123,29 @@ class PostDelete(DeleteView):
     success_url = "/profile/"
 
 
+class UserAttending(View):
+    def get(self, request, pk, user_pk):
+        user_pk = Profile.objects.get(user=self.request.user.pk)
+        print(user_pk)
+        attending = request.GET.get("attending")
+        if (attending == "remove"):
+            Event.objects.get(pk=pk).users_attending.remove(user_pk)
+        if (attending == "add"):
+            Event.objects.get(pk=pk).users_attending.add(user_pk)
+        return redirect('event-detail', pk=pk)
+
+class AllCities(TemplateView):
+    template_name='all_cities.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        search = self.request.GET.get("search")
+        if (search != None):
+            context["cities"] = City.objects.filter(Q(name__icontains=search)|Q(state__icontains=search)|Q(country__icontains=search))
+            context["header"] = f"Search for '{search}'"
+        else:
+            context["cities"] = City.objects.all()
+            context["header"] = "All Cities"
+        if (self.request.user.is_authenticated):
+            context["profile"] = Profile.objects.filter(user=self.request.user)
+        return context
