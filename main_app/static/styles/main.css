@@ -11,7 +11,7 @@ nav {
     height: 75px;
 }
 
-.navbar-custom, .modal-header, .profileeditformwrapper {
+.navbar-custom, .modal-header {
     background-color: #F8DD74;
     color: #D446C1;
 }
@@ -309,6 +309,7 @@ nav {
 .profileeditformwrapper {
     width: 50%;
     margin: 0 auto;
+    margin-bottom: 25px;
 }
 
 .profile-page {
@@ -487,6 +488,7 @@ nav {
     width: 75%;
     margin: 0 auto;
     margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .signup h1 {
@@ -866,6 +868,16 @@ nav {
 }
 
 .all-events-button {
+    background-color: #D446C1;
+    color: white;
+}
+
+#signupviewbtn {
+    background-color: #D446C1;
+    color: white;
+}
+
+#loginviewbtn {
     background-color: #D446C1;
     color: white;
 }
