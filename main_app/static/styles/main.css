@@ -500,6 +500,7 @@ nav {
     padding-bottom: 20px;
     font-style: italic;
     font-weight: lighter;
+    text-align: center;
 }
 
 .nav-item .dropdown {
@@ -796,7 +797,7 @@ nav {
 .footer-text {
     margin-left: 30px;
     margin-top: 10px;
-    max-width: 500px;
+    max-width: 600px;
 }
 
 .footer-logo {
