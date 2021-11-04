@@ -35,7 +35,7 @@ class ProfileView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["events"] = Event.objects.filter(users_attending__id=self.request.user.id)
+        context["events"] = Event.objects.filter(users_attending__user=self.request.user)
         context["posts"] = Post.objects.filter(profile=self.request.user).order_by('-date')
         if (self.request.user.is_authenticated):
             context["profile"] = Profile.objects.filter(user=self.request.user)

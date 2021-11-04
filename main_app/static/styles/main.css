@@ -705,3 +705,48 @@ nav {
     width: 92%;
     margin: 0 auto;
 }
+
+.event-users-attending h4{
+    font-style: italic;
+    font-weight: lighter;
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+
+.users-attending-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.users-attending-card {
+    width: 275px;
+    height: 275px;
+}
+
+.user-attending-image {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.user-attending-image img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-attending-info {
+    text-align: center;
+    margin-top: 7.5px;
+}
+
+.user-attending-info p {
+    font-style: italic;
+    font-weight: lighter;
+    margin-top: -10px;
+}

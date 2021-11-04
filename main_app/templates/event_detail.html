@@ -48,19 +48,19 @@
         <div class="event-users-attending">
             <h1>Users Attending</h1>
             <h4>{{event.users_attending.all.count}} People are Attending!</h4>
-        </div>
-        <div class="users-attending-container">
-            {% for user in event.users_attending.all %}
-            <div class="users-attending-card">
-                <div class="user-attending-image">
-                    <img src="{{user.profile.avatar}}" alt="">
+            <div class="users-attending-container">
+                {% for profile in event.users_attending.all %}
+                <div class="users-attending-card">
+                    <div class="user-attending-image">
+                        <img src="{{profile.avatar}}" alt="">
+                    </div>
+                    <div class="user-attending-info">
+                        <h6>{{profile.user.first_name}} {{profile.user.last_name}}</h6>
+                        <p>{{profile.city.name}}, {{profile.city.state}}</p>
+                    </div>
                 </div>
-                <div class="user-attending-info">
-                    <h6>{{user.first_name}} {{user.last_name}}</h6>
-                    <p>{{user.profile.city.name}}, {{user.profile.city.state}}</p>
-                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
         
