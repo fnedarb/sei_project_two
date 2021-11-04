@@ -11,7 +11,7 @@ nav {
     height: 75px;
 }
 
-.navbar-custom, .modal-header, .profileeditformwrapper {
+.navbar-custom, .modal-header {
     background-color: #F8DD74;
     color: #D446C1;
 }
@@ -309,6 +309,7 @@ nav {
 .profileeditformwrapper {
     width: 50%;
     margin: 0 auto;
+    margin-bottom: 25px;
 }
 
 .profile-page {
