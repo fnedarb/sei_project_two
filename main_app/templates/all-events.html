@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}All Events{% endblock %} 
+{% block content %}
+
+<div class="all-content">
+    <div class="all-events-image-page">
+        <div class="city-image-text">
+            <h1>All Events</h1>
+        </div>
+    </div>
+    <div class="events">
+        {% for city in cities %}
+        <h1 class="homepage-events">{{city.name}}, {{city.state}}</h1>
+        <hr>
+        <div class="top-events-container">
+            {% for event in events %}
+            {% if event.city == city %}
+            <a href="/event/{{event.pk}}">
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="{{event.image}}" alt="{{event.name}}">
+                </div>
+                <div class="event-content">
+                    <div class="event-title-homepage">
+                        <h6 class="event-name-homepage">{{event.name}}</h6>
+                        <p>{{event.city.name}}, {{event.city.state}}</p>
+                    </div>
+                    <div class="event-info-homepage">
+                        <div class="person-date">
+                            <p id="person"><i class="bi bi-person"></i></p>
+                            <p class="person-count">{{event.users_attending.all.count}}</p>
+                        </div>
+                        <p id="date">{{event.date.month}}/{{event.date.day}}/{{event.date.year}}</p>
+                    </div>
+                </div>
+            </div>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

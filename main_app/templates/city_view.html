@@ -90,11 +90,11 @@
             {% csrf_token %}
                 <div class="form-group mt-2 mb-4">
                     <label for="postImage">Photo</label>
-                    <input type="text" class="form-control" id="postImage" name="postImage" placeholder="Image URL" required>
+                    <input type="text" class="form-control" id="postImage" name="postImage" placeholder="Image URL" autocomplete="off" required> 
                 </div>
                 <div class="form-group my-4">
                     <label for="postTitle">Title</label>
-                    <input type="text" class="form-control" id="postTitle" name="postTitle" placeholder="Post Title" required>
+                    <input type="text" class="form-control" id="postTitle" name="postTitle" placeholder="Post Title" autocomplete="off" required>
                 </div>
                 <div class="form-group my-4">
                     <label for="postContent">Content</label>

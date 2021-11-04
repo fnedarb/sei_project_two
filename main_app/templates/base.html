@@ -42,12 +42,12 @@
                         
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                {% for prof in profile %}
+                                {% for prof in currentprofile %}
                                 <img class="navbar-avatar" src="{{prof.avatar}}" alt="profile-pic">
-                                {% endfor %}
                             </li>
                             <li class="nav-item my-2">
-                                <a class="nav-link" href="/profile/">{{user.first_name}}'s Profile</a>
+                                <a class="nav-link" href="/profile/{{prof.pk}}">{{user.first_name}}'s Profile</a>
+                                {% endfor %}
                             </li>
                             <li class="nav-item my-2">
                                 <a class="nav-link" href="/accounts/logout/">Log Out</a>

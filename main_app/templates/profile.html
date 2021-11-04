@@ -5,22 +5,22 @@
 <div class="profile-page">
     <div class="profile-header">
         <div class="image-name-city">
-            {% for prof in profile %}
-            <img src="{{prof.avatar}}" alt="user-image">
-            <h4>{{user.first_name}} {{user.last_name}}</h4>
-            <h6>{{prof.city.name}}, {{prof.city.state}} <br /> Joined on {{user.date_joined.month}}/{{user.date_joined.day}}/{{user.date_joined.year}}</h6>
-            {% endfor %}
+
+            <img src="{{profile.avatar}}" alt="user-image">
+            <h4>{{profile.user.first_name}} {{profile.user.last_name}}</h4>
+            <h6>{{profile.city.name}}, {{profile.city.state}} - Joined on {{profile.user.date_joined.month}}/{{profile.user.date_joined.day}}/{{profile.user.date_joined.year}}</h6>
+
         </div>
-        {% if user.is_authenticated %}
+        {% for prof in currentprofile %}
+        {% if prof == profile %}
         <div class="profile-edit-btn">
-            {% for prof in profile %}
             <a href="/profile/{{prof.pk}}/edit/">
-            {% endfor %}
                 <button id="edit-profile" class="btn">Edit Profile</button>
             </a>
         </div>
         {% else %} 
         {% endif %}
+        {% endfor %}
     </div>
     <!-- Edit Profile Modal -->
     
@@ -94,7 +94,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <form action="{% url 'delete-post' post.pk %}" method="post">
+          <form action="{% url 'delete-post' post.pk  %}" method="post">
               {% csrf_token %}
               <button type="submit" class="btn btn-danger">Delete</button>
           </form>
