@@ -123,6 +123,7 @@ class PostDelete(DeleteView):
     success_url = "/profile/"
 
 
+
 class UserAttending(View):
     def get(self, request, pk, user_pk):
         user_pk = Profile.objects.get(user=self.request.user.pk)
@@ -133,6 +134,8 @@ class UserAttending(View):
         if (attending == "add"):
             Event.objects.get(pk=pk).users_attending.add(user_pk)
         return redirect('event-detail', pk=pk)
+
+
 
 class AllCities(TemplateView):
     template_name='all_cities.html'
