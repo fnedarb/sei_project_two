@@ -829,6 +829,49 @@ nav {
     margin-bottom: 30px;
 }
 
+/* All Events Page */
+.all-events-image-page {
+    margin-top: 0px;
+    width: 100%;
+    height: 500px;
+    background-image: linear-gradient(to top, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
+    url('https://www.nycgo.com/images/pages/364/20160615-soc-events-lp__facebook.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 30px;
+}
+
+
+
+/* Home Page all Events Button */
+.see-all-events {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 92%;
+    margin: 0 auto;
+}
+
+.all-events-header{
+    width: 60%;
+}
+
+.all-events-header h1{
+    margin-left: 15px;
+}
+
+.all-events-see-all {
+    width: 140px;
+    margin-right: 15px;
+}
+
+.all-events-button {
+    background-color: #D446C1;
+    color: white;
+}
+
 #signupviewbtn {
     background-color: #D446C1;
     color: white;
