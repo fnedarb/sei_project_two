@@ -808,3 +808,8 @@ nav {
 .copyright {
     font-size: xx-small;
 }
+
+.searchbar ::placeholder {
+    font-size: smaller;
+    font-weight: 300;
+}
