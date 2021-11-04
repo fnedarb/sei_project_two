@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls.base import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -114,13 +115,15 @@ class PostCreate(View):
 class PostUpdate(UpdateView):
     model = Post
     fields = ['title', 'photo', 'content']
-    template_name = " "
+    template_name = "post_update.html"
     success_url = "/profile/"
 
-class PostDelete(DeleteView):
-    model = Post
-    template_name = " "
-    success_url = "/profile/"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if (self.request.user.is_authenticated) and (self.request.user):
+            context["profile"] = Profile.objects.filter(user=self.request.user)
+
+        return context
 
 
 
@@ -139,6 +142,28 @@ class UserAttending(View):
 
 class AllCities(TemplateView):
     template_name='all_cities.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        search = self.request.GET.get("search")
+        if (search != None):
+            context["cities"] = City.objects.filter(Q(name__icontains=search)|Q(state__icontains=search)|Q(country__icontains=search))
+            context["header"] = f"Search for '{search}'"
+        else:
+            context["cities"] = City.objects.all()
+            context["header"] = "All Cities"
+        if (self.request.user.is_authenticated):
+            context["profile"] = Profile.objects.filter(user=self.request.user)
+        return context
+
+
+class DeletePost(DeleteView):
+    model = Post
+    success_url= reverse_lazy('profile')
+    template_name = "profile.html"
+
+class AllEvents(TemplateView):
+    template_name='all_events.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
