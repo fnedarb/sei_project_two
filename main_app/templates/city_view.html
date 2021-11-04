@@ -26,6 +26,7 @@
         <hr>
         <div class="top-events-container">
             {% for event in city.event_city.all %}
+            <a href="{% url 'event-detail' event.pk %}">
             <div class="event-card">
                 <div class="event-image">
                     <img src="{{event.image}}" alt="fun">
@@ -43,6 +44,7 @@
                     </div>
                 </div>
             </div>
+            </a>
             {% endfor %}
         </div>
     </div>

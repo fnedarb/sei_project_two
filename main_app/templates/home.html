@@ -21,7 +21,14 @@
         </div>
     </div>
     <div class="cities">
-        <h1 class="homepage-city">Top Cities</h1>
+        <div class="see-all-cities">
+            <div class="all-cities-header">
+                <h1 class="homepage-city">Top Cities</h1>
+            </div>
+            <div class="all-cities-see-all">
+                <a class="all-cities-button btn" href="{% url 'all-cities' %}">See All Cities</a>
+            </div>
+        </div>
         <hr>
         <div class="top-cities-container">
             {% for city in cities %}
