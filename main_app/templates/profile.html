@@ -22,7 +22,6 @@
         {% else %} 
         {% endif %}
     </div>
-    <!-- ha ha this is so i can commit-->
     <!-- Edit Profile Modal -->
     
     <!-- <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
@@ -77,7 +76,7 @@
                     <div class="profile-post-title-action">
                         <h6>{{post.title}}</h6>
                         <div class="edit-del-btn">
-                            <a href=""><i id="post-edit" class="bi bi-pencil-fill"></i></a>
+                            <a href="/post/{{post.pk}}/edit/"><i id="post-edit" class="bi bi-pencil-fill"></i></a>
                             <a href=""><i id="post-delete" class="bi bi-trash-fill"></i></a>
                         </div>
                     </div>

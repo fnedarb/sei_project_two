@@ -114,8 +114,15 @@ class PostCreate(View):
 class PostUpdate(UpdateView):
     model = Post
     fields = ['title', 'photo', 'content']
-    template_name = " "
+    template_name = "post_update.html"
     success_url = "/profile/"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if (self.request.user.is_authenticated) and (self.request.user):
+            context["profile"] = Profile.objects.filter(user=self.request.user)
+
+        return context
 
 class PostDelete(DeleteView):
     model = Post

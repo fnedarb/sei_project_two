@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="profileeditformwrapper">
-        <form action="" method="post" id="profileEditForm">
+        <form action="" method="post" id="postEditForm">
             {% csrf_token %} 
             {{form | crispy}}
             <button class="btn save-changes" type="submit">Save Changes</button>
