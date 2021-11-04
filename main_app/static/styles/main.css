@@ -500,7 +500,6 @@ nav {
     padding-bottom: 20px;
     font-style: italic;
     font-weight: lighter;
-    text-align: center;
 }
 
 .nav-item .dropdown {
@@ -826,3 +825,10 @@ nav {
     background-repeat: no-repeat;
     margin-bottom: 30px;
 }
+
+#no-posts-text {
+    text-align: left;
+    margin-left: 50px;
+}
+/* bad solution here - check on it */
+

@@ -1,17 +1,18 @@
-# zashlios - social news
+# wayfarer - travel site and event finder
 
 ### context:<br />
-this is a 4-day group project intended to showcase 
-* the creation of a MEN application 
-* clean execution of an existing website design, including full responsiveness for mobile and web
-* full CRUD for articles - the main content of the site
-* the addition of user authentication, likes, comments, and permissioning based on account type
+this is a weeklong group project intended to showcase 
+* the creation of a django application 
+* full implementation of ground-up responsive web design
+* successful planning of model relationships in an ERD diagram
+* full user authentication with permissions
+* full CRUD for Posts attached to Cities
+* admin-side creation of Events that users can research and attend
 * successful project execution in a group using github and jira
-* fluency with mongodb, mongoose, and heroku deployment
+
 
 ### concept: <br />
-Zashlios is a social news website inspired by the clean design and simple layout of [Axios, a US-based media company.](https://www.axios.com/) <br /><br />
-the project was named "zashlios" for the 3 collaborators on this assignment: Zach Ceneviva, Zach Buchman, and Ashley Romano. we've taken the general direction of Axios and added additional personalization and social features.
+
 
 ### process: <br />
 * our process began with consesnsus on the axios-inspired concept, followed by basic wireframing and user story creation in figma, and the drafting of an ERD <br />
