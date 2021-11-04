@@ -785,3 +785,26 @@ nav {
     background-color: #D446C1;
     color: white;
 }
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    background-color:#F8DD74;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+.footer-text {
+    margin-left: 30px;
+    margin-top: 10px;
+    max-width: 500px;
+}
+
+.footer-logo {
+    font-weight: 800;
+    color:#D446C1;
+}
+
+.copyright {
+    font-size: xx-small;
+}
