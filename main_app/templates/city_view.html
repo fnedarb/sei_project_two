@@ -1,55 +1,108 @@
 {% extends 'base.html' %}
-{% block title %}City{% endblock %} 
+{% block title %}{{city.name}}{% endblock %} 
 {% block content %}
+<style>
+    .city-image-page {
+    margin-top: 0px;
+    width: 100%;
+    height: 500px;
+    background-image: linear-gradient(to top, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
+    url('{{city.image}}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 30px;
+}
+</style>
 
 <div class="all-content">
     <div class="city-image-page">
         <div class="city-image-text">
-            <h1>Chicago</h1>
+            <h1>{{city.name}}</h1>
         </div>
     </div>
     <div class="events">
         <h1 class="homepage-events">Top Events</h1>
         <hr>
         <div class="top-events-container">
+            {% for event in city.event_city.all %}
+            <a href="{% url 'event-detail' event.pk %}">
             <div class="event-card">
                 <div class="event-image">
-                    <img src="https://www.expatica.com/app/uploads/sites/17/2020/11/rsz_austrian_etiquette_of_dating-1024x684.jpg" alt="fun">
+                    <img src="{{event.image}}" alt="fun">
                 </div>
                 <div class="event-content">
                     <div class="event-title-homepage">
-                        <h6 class="event-name-homepage">Thirst Thursday</h6>
-                        <p></p>
+                        <h6 class="event-name-homepage">{{event.name}}</h6>
+                        <p id="date-city-page">{{event.date.month}}/{{event.date.day}}/{{event.date.year}}</p>
                     </div>
                     <div class="event-info-homepage">
                         <div class="person-date">
                             <p id="person"><i class="bi bi-person"></i></p>
-                            <p class="person-count">24</p>
+                            <p class="person-count">{{event.users_attending.count}}</p>
                         </div>
-                        <p id="date">11/21/21</p>
                     </div>
                 </div>
             </div>
+            </a>
+            {% endfor %}
         </div>
     </div>
     <div class="city-posts">
-        <h1 class="city-post-title">Posts</h1>
+        <div class="posts-add">
+            <h1 class="city-post-title">Posts</h1>
+            <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Add Post</button>
+        </div>
         <hr>
         <div class="city-posts-container">
+            {% for post in posts %}
             <div class="city-post-card">
                 <div class="post-user-image-name">
-                    <img src="https://forrestperkins.com/wp-content/uploads/2017/11/avatar.jpg" alt="user-image">
-                    <h6>Braden Fink</h6>
-                    <p>Frederick, MD</p>
+                    <img src="{{post.photo}}" alt="post-image">
                 </div>
                 <div class="city-post-content">
-                    <h6>Post Name</h6>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta sit illum expedita labore possimus eum magnam voluptatibus? Eaque numquam reprehenderit tempora obcaecati odit magni animi aspernatur distinctio fugit, nisi placeat.
-                    Voluptate vel minima ullam, quas amet inventore laudantium assumenda cupiditate obcaecati id dolorum sint! Voluptate, doloribus odio, laboriosam voluptates expedita, hic qui minus beatae nesciunt id recusandae molestias ea temporibus!</p>
+                    <h6>{{post.title}}</h6>
+                    <p class="user-info">{{post.profile.first_name}} {{post.profile.last_name}} - Posted {{post.date.month}}/{{post.date.day}}/{{post.date.year}}</p>
+                    <p>{{post.content}}</p>
                 </div>
             </div>
+            {% empty %}
+            <h2 class="no-posts">No Posts to Show</h2>
+            {% endfor %}
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Add a Post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'post-create' city.pk %}" method="post">
+            {% csrf_token %}
+                <div class="form-group mt-2 mb-4">
+                    <label for="postImage">Photo</label>
+                    <input type="text" class="form-control" id="postImage" name="postImage" placeholder="Image URL" required>
+                </div>
+                <div class="form-group my-4">
+                    <label for="postTitle">Title</label>
+                    <input type="text" class="form-control" id="postTitle" name="postTitle" placeholder="Post Title" required>
+                </div>
+                <div class="form-group my-4">
+                    <label for="postContent">Content</label>
+                    <textarea class="form-control" id="postContent" name="postContent" rows="7" required></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Create Post</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
