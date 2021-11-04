@@ -487,6 +487,7 @@ nav {
     width: 75%;
     margin: 0 auto;
     margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .signup h1 {
@@ -825,4 +826,14 @@ nav {
     background-position: center;
     background-repeat: no-repeat;
     margin-bottom: 30px;
+}
+
+#signupviewbtn {
+    background-color: #D446C1;
+    color: white;
+}
+
+#loginviewbtn {
+    background-color: #D446C1;
+    color: white;
 }
