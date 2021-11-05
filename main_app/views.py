@@ -43,6 +43,7 @@ class ProfileView(DetailView):
             context["currentprofile"] = Profile.objects.filter(user=self.request.user)
         return context
 
+@method_decorator(login_required, name='dispatch')
 class ProfileUpdate(UpdateView):
     model = Profile
     fields = ['city', 'avatar']
@@ -104,7 +105,7 @@ class Signup(View):
             return render(request, 'registration/signup.html', context)
 
 
-
+@method_decorator(login_required, name='dispatch')
 class PostCreate(View):
     def post(self, request, pk):
         profile = self.request.user
@@ -116,6 +117,7 @@ class PostCreate(View):
         Post.objects.create(profile=profile, title=title, city=city, content=content, upvotes=upvotes, photo=photo)
         return redirect('city-detail', pk=pk)
 
+@method_decorator(login_required, name='dispatch')
 class PostUpdate(UpdateView):
     model = Post
     fields = ['title', 'photo', 'content']
@@ -163,6 +165,7 @@ class AllCities(TemplateView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class DeletePost(DeleteView):
     model = Post
     template_name = "profile.html"
