@@ -270,6 +270,7 @@ nav {
 
 #date {
     margin-top: -17.5px;
+    text-align: right;
 }
 
 #date-city-page {
@@ -278,7 +279,8 @@ nav {
 
 #person {
     font-size: 15px;
-    margin-left: -10px;
+    margin-left: 20px;
+    text-align: right;
 }
 
 #signinbtn {
@@ -472,8 +474,8 @@ nav {
     font-size: 20px;
 }
 
-.city-post-content p{
-    margin-top: 15px;
+.city-post-content .content-post{
+    margin-top: -7.5px;
     font-size: 15px;
 }
 
@@ -600,8 +602,8 @@ nav {
     font-size: 20px;
 }
 
-.profile-city-post-content p{
-    margin-top: 15px;
+.profile-city-post-content .profile-content-post{
+    margin-top: -7.5px;
     font-size: 15px;
 }
 
