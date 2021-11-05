@@ -24,7 +24,7 @@ class Home(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         search = self.request.GET.get("search")
-        context["events"] = Event.objects.all()[:3]
+        context["events"] = Event.objects.all().annotate(count=Count('users_attending__user')).order_by('-count')[:3]
         context["cities"] = City.objects.all()[:3]
         if (self.request.user.is_authenticated):
             context["currentprofile"] = Profile.objects.filter(user=self.request.user)
@@ -43,6 +43,7 @@ class ProfileView(DetailView):
             context["currentprofile"] = Profile.objects.filter(user=self.request.user)
         return context
 
+@method_decorator(login_required, name='dispatch')
 class ProfileUpdate(UpdateView):
     model = Profile
     fields = ['city', 'avatar']
@@ -98,13 +99,13 @@ class Signup(View):
             user.user.avatar = form.cleaned_data.get('avatar')
             user.save()
             login(request, user)
-            return redirect ('profile')
+            return redirect ('home')
         else:
             context = {"form": form}
             return render(request, 'registration/signup.html', context)
 
 
-
+@method_decorator(login_required, name='dispatch')
 class PostCreate(View):
     def post(self, request, pk):
         profile = self.request.user
@@ -116,6 +117,7 @@ class PostCreate(View):
         Post.objects.create(profile=profile, title=title, city=city, content=content, upvotes=upvotes, photo=photo)
         return redirect('city-detail', pk=pk)
 
+@method_decorator(login_required, name='dispatch')
 class PostUpdate(UpdateView):
     model = Post
     fields = ['title', 'photo', 'content']
@@ -163,6 +165,7 @@ class AllCities(TemplateView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class DeletePost(DeleteView):
     model = Post
     template_name = "profile.html"

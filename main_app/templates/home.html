@@ -10,14 +10,14 @@
             {% else %} 
             <h1>Where to?</h1>
             {% endif %}
-            <form action="#">
             <div class="input searchbar">
-                <input type="text" class="form-control-lg search" name="search" placeholder="A new city awaits you..." aria-label="City Search" aria-describedby="basic-addon2" autocomplete="off">
-                <div class="input">
-                    <button class="btn bg-outline pb-4 searchbtn invisible" type="button"><i class="bi bi-search"></i></button>
-                </div>
+                <form action="{% url 'all-cities' %}" method="GET">
+                    <input type="text" class="form-control-lg search" name="search" placeholder="A new city awaits you..." aria-label="City Search" aria-describedby="basic-addon2" autocomplete="off">
+                    <div class="input">
+                        <input type="submit" class="btn bg-outline pb-4 searchbtn d-none" type="button">
+                    </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
     <div class="cities">

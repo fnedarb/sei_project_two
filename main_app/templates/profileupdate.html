@@ -9,7 +9,7 @@
             {% for prof in currentprofile %}
             <img src="{{prof.avatar}}" alt="user-image">
             <h4>{{user.first_name}} {{user.last_name}}</h4>
-            <h6>{{prof.city.name}}, {{prof.city.state}} - Joined on {{user.date_joined.month}}/{{user.date_joined.day}}/{{user.date_joined.year}}</h6>
+            <h6>{{prof.city.name}}, {{prof.city.state}} <br> Joined on {{user.date_joined.month}}/{{user.date_joined.day}}/{{user.date_joined.year}}</h6>
             {% endfor %}
         </div>
     </div>

@@ -152,7 +152,8 @@ nav {
 .city-image img {
     width: 100%;
     height: 225px;
-    border-radius: 10px 10px 10px 10px
+    border-radius: 10px 10px 10px 10px;
+    object-fit: cover;
 }
 
 .city-content {
@@ -222,13 +223,14 @@ nav {
 .event-image {
     width: 100%;
     height: 225px;
-    border-radius: 10px 10px 0px 0px
+    border-radius: 10px 10px 0px 0px;
 }
 
 .event-image img {
     width: 100%;
     height: 225px;
-    border-radius: 10px 10px 10px 10px
+    border-radius: 10px 10px 10px 10px;
+    object-fit: cover;
 }
 
 .event-content {
@@ -270,6 +272,7 @@ nav {
 
 #date {
     margin-top: -17.5px;
+    text-align: right;
 }
 
 #date-city-page {
@@ -278,7 +281,8 @@ nav {
 
 #person {
     font-size: 15px;
-    margin-left: -10px;
+    margin-left: 20px;
+    text-align: right;
 }
 
 #signinbtn {
@@ -472,8 +476,8 @@ nav {
     font-size: 20px;
 }
 
-.city-post-content p{
-    margin-top: 15px;
+.city-post-content .content-post{
+    margin-top: -7.5px;
     font-size: 15px;
 }
 
@@ -484,17 +488,42 @@ nav {
 }
 
 /* NAVBAR Styling */
+.signup-container {
+    width: 50%;
+    margin: 0 auto;
+    box-shadow: 0px 0px 3px 0.5px lightgray;
+    border-radius: 10px;
+    margin-top: 75px;
+    margin-bottom: 100px;
+}
+
 .signup {
-    width: 75%;
+    width: 60%;
     margin: 0 auto;
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 }
 
 .signup h1 {
     text-align: center;
     color: #3E3E3E;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    font-size: 40px;
+}
+
+.signup hr {
+    margin-top: 10px;
+}
+
+.signup-images {
+    margin: 0 auto;
+    padding-top: 15px;
+    width: 75px;
+}
+
+.signup-images img{
+    width: 75px;
 }
 
 .no-posts {
@@ -600,8 +629,8 @@ nav {
     font-size: 20px;
 }
 
-.profile-city-post-content p{
-    margin-top: 15px;
+.profile-city-post-content .profile-content-post{
+    margin-top: -7.5px;
     font-size: 15px;
 }
 
@@ -626,8 +655,8 @@ nav {
 .event-city-state {
     margin: 0 auto;
     width: 42%;
-    text-align: left;
-    margin-bottom: -12.5px;
+    text-align: center;
+    margin-top: -15px;
 }
 
 .event-city-state h4 {
@@ -727,6 +756,11 @@ nav {
     align-items: flex-start;
     flex-wrap: wrap;
     width: 100%;
+}
+
+.users-attending-container a {
+    color:#3E3E3E;
+    text-decoration: none;
 }
 
 .users-attending-card {
@@ -892,6 +926,7 @@ nav {
 #signupviewbtn {
     background-color: #D446C1;
     color: white;
+    margin-bottom: 25px;
 }
 
 #loginviewbtn {

@@ -8,7 +8,7 @@
 
             <img src="{{profile.avatar}}" alt="user-image">
             <h4>{{profile.user.first_name}} {{profile.user.last_name}}</h4>
-            <h6>{{profile.city.name}}, {{profile.city.state}} - Joined on {{profile.user.date_joined.month}}/{{profile.user.date_joined.day}}/{{profile.user.date_joined.year}}</h6>
+            <h6>{{profile.city.name}}, {{profile.city.state}} <br> Joined on {{profile.user.date_joined.month}}/{{profile.user.date_joined.day}}/{{profile.user.date_joined.year}}</h6>
 
         </div>
         {% for prof in currentprofile %}
@@ -85,7 +85,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Confirm Deletion</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </button>
         </div>
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <p class="profile-city-info">{{post.city.name}}, {{post.city.state}} - Posted {{post.date.month}}/{{post.date.day}}/{{post.date.year}}</p>
-                    <p>{{post.content}}</p>
+                    <p class="profile-content-post">{{post.content}}</p>
                 </div>
             </div>
             {% empty %}

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}{{city.name}}{% endblock %} 
 {% block content %}
+{% load humanize %}
 <style>
     .city-image-page {
     margin-top: 0px;
@@ -54,7 +55,9 @@
     <div class="city-posts">
         <div class="posts-add">
             <h1 class="city-post-title">Posts</h1>
+            {% if user.is_authenticated %}
             <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Add Post</button>
+            {% endif %}
         </div>
         
         <div class="city-posts-container">
@@ -65,8 +68,9 @@
                 </div>
                 <div class="city-post-content">
                     <h6>{{post.title}}</h6>
-                    <p class="user-info">{{post.profile.first_name}} {{post.profile.last_name}} - Posted {{post.date.month}}/{{post.date.day}}/{{post.date.year}}</p>
-                    <p>{{post.content}}</p>
+                    <p class="user-info">{{post.profile.first_name}} {{post.profile.last_name}} - Posted {{post.date | naturalday}}</p>
+                    <!-- <p class="user-info">{{post.profile.first_name}} {{post.profile.last_name}} - Posted {{post.date.month}}/{{post.date.day}}/{{post.date.year}}</p> -->
+                    <p class="content-post">{{post.content}}</p>
                 </div>
             </div>
             {% empty %}

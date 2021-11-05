@@ -2,16 +2,20 @@
 {% block title %}Sign-Up{% endblock %} 
 {% block content %}
 {% load crispy_forms_tags %}
-
+<div class="signup-container">
     <div class="signup">
+        <div class="signup-images">
+            <img src="https://i.ibb.co/7pkgtDD/earth-1.png" alt="sign-up-image">
+        </div>
         <h1>Create An Account</h1>
-        <form method="post" action="{% url 'signup' %}">
+        <hr>
+        <form method="post" action="{% url 'signup' %}" autocomplete="off">
             {% csrf_token %} 
             {{ form | crispy}}
             <button type="submit" class="btn" id="signupviewbtn">Sign Up</button>
             <input type="hidden" name="next" value="{{ next }}" />
         </form>
     </div>
-
+</div>
 
 {% endblock %}

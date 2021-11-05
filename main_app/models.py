@@ -23,7 +23,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE, related_name="user")
     city = ForeignKey(City, on_delete = models.CASCADE, related_name = "city", null=True)
     age = models.IntegerField(default=18, null=True)
-    avatar = models.URLField(max_length = 600, null=True)
+    avatar = models.URLField(max_length = 600, null=True, default="https://media.istockphoto.com/vectors/woman-avatar-isolated-on-white-background-vector-illustration-for-vector-id1167753373?k=20&m=1167753373&s=612x612&w=0&h=88d0JshtPmZuJO3ybxNU9P-v-IHadT8PnPDNKdAFxCU=")
 
     def __str__(self):
         return self.user.username
