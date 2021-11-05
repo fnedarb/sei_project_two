@@ -24,7 +24,7 @@ class Home(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         search = self.request.GET.get("search")
-        context["events"] = Event.objects.all()[:3]
+        context["events"] = Event.objects.all().annotate(count=Count('users_attending__user')).order_by('-count')[:3]
         context["cities"] = City.objects.all()[:3]
         if (self.request.user.is_authenticated):
             context["currentprofile"] = Profile.objects.filter(user=self.request.user)
