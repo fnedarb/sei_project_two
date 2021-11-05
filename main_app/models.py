@@ -23,7 +23,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE, related_name="user")
     city = ForeignKey(City, on_delete = models.CASCADE, related_name = "city", null=True)
     age = models.IntegerField(default=18, null=True)
-    avatar = models.URLField(max_length = 600, null=True)
+    avatar = models.URLField(max_length = 600, null=True, default="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png")
 
     def __str__(self):
         return self.user.username

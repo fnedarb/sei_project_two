@@ -98,7 +98,7 @@ class Signup(View):
             user.user.avatar = form.cleaned_data.get('avatar')
             user.save()
             login(request, user)
-            return redirect ('profile')
+            return redirect ('home')
         else:
             context = {"form": form}
             return render(request, 'registration/signup.html', context)

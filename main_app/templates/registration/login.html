@@ -5,7 +5,7 @@
 
     <div class="signup">
         <h1>Login</h1>
-        <form method="post" action="{% url 'login' %}">
+        <form method="post" action="{% url 'login' %}" autocomplete="off">
             {% csrf_token %} 
             {{ form | crispy}}
             <button type="submit" class="btn" id="loginviewbtn">Login</button>
