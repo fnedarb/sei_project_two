@@ -36,19 +36,22 @@ in addition, we added the concept of "Events" going on in each city that our sit
 
 ### user stories:<br />
 * users land on a homepage where they can see top cities and events, as well as sign up/log in <br />
-![homepage](https://i.ibb.co/TqCPJp6/Screen-Shot-2021-10-14-at-2-59-27-PM.png)
+![homepage](https://ga-students.slack.com/files/U02CFKTQK3Q/F02KUNWH77H/screen_shot_2021-11-04_at_7.09.23_pm.png)
 * in order to add posts or attend events, the user must create an account or log in <br />
-![account creation](https://i.ibb.co/dB5DTkt/Screen-Shot-2021-10-14-at-2-56-52-PM.png)
+![account creation](https://ga-students.slack.com/files/U02CFKTQK3Q/F02KUNWH77H/screen_shot_2021-11-04_at_7.09.23_pm.png)
 * on city pages, users can see upcoming events and read recommendations posted by other users <br />
-![city page](https://i.ibb.co/pJ6nBFh/Screen-Shot-2021-10-14-at-3-01-25-PM.png)
+![city page](https://ga-students.slack.com/files/U02CFKTQK3Q/F02L9DL282X/screen_shot_2021-11-04_at_7.11.47_pm.png)
+![city page posts](https://ga-students.slack.com/files/U02CFKTQK3Q/F02LBKWLQR2/screen_shot_2021-11-04_at_7.12.14_pm.png)
 * on event pages, users can learn more about events, mark themselves as attending, and see the current guest list <br />
-![event page](https://i.ibb.co/pJ6nBFh/Screen-Shot-2021-10-14-at-3-01-25-PM.png)
+![event page](https://ga-students.slack.com/files/U02CFKTQK3Q/F02LN1RK56D/screen_shot_2021-11-04_at_7.10.49_pm.png)
+![event page guests](https://ga-students.slack.com/files/U02CFKTQK3Q/F02LZ3YFNKA/screen_shot_2021-11-04_at_7.11.03_pm.png)
 * users can see events they're attending and any posts they've made on their profile pages – they can also edit or delete their own posts, or view other user profiles without edit/delete permissions <br />
-![profile](https://i.ibb.co/pJ6nBFh/Screen-Shot-2021-10-14-at-3-01-25-PM.png)
+![profile](https://ga-students.slack.com/files/U02CFKTQK3Q/F02LZ3YM7RN/screen_shot_2021-11-04_at_7.11.35_pm.png)
+![edit post](https://ga-students.slack.com/files/U02CFKTQK3Q/F02L9DLMKMH/screen_shot_2021-11-04_at_7.12.37_pm.png)
 * users can also browse a page of all featured cities <br />
-![all cities](https://i.ibb.co/pJ6nBFh/Screen-Shot-2021-10-14-at-3-01-25-PM.png)
+![all cities](https://ga-students.slack.com/files/U02CFKTQK3Q/F02L6DTNES1/screen_shot_2021-11-04_at_7.09.47_pm.png)
 * finally, we've provided a quick look index of all events categorized by city <br />
-![all events](https://i.ibb.co/pJ6nBFh/Screen-Shot-2021-10-14-at-3-01-25-PM.png)
+![all events](https://ga-students.slack.com/files/U02CFKTQK3Q/F02L9D6V0E6/screen_shot_2021-11-04_at_7.10.11_pm.png)
 
 ### code: <br />
 * wayfarer is a django app
