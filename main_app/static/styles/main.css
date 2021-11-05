@@ -626,8 +626,8 @@ nav {
 .event-city-state {
     margin: 0 auto;
     width: 42%;
-    text-align: left;
-    margin-bottom: -12.5px;
+    text-align: center;
+    margin-top: -15px;
 }
 
 .event-city-state h4 {
