@@ -36,19 +36,22 @@ in addition, we added the concept of "Events" going on in each city that our sit
 
 ### user stories:<br />
 * users land on a homepage where they can see top cities and events, as well as sign up/log in <br />
-![homepage](https://i.ibb.co/TqCPJp6/Screen-Shot-2021-10-14-at-2-59-27-PM.png)
+![homepage](https://i.ibb.co/F0X1zkc/Screen-Shot-2021-11-04-at-7-09-23-PM.png)
 * in order to add posts or attend events, the user must create an account or log in <br />
-![account creation](https://i.ibb.co/dB5DTkt/Screen-Shot-2021-10-14-at-2-56-52-PM.png)
+![account creation](https://i.ibb.co/p2x65tN/Screen-Shot-2021-11-04-at-7-15-15-PM.png)
 * on city pages, users can see upcoming events and read recommendations posted by other users <br />
-![city page](https://i.ibb.co/pJ6nBFh/Screen-Shot-2021-10-14-at-3-01-25-PM.png)
+![city page](https://i.ibb.co/Vvt7sMb/Screen-Shot-2021-11-04-at-7-11-47-PM.png)<br />
+![city page posts](https://i.ibb.co/gd8Rwwb/Screen-Shot-2021-11-04-at-7-12-14-PM.png)
 * on event pages, users can learn more about events, mark themselves as attending, and see the current guest list <br />
-![event page](https://i.ibb.co/pJ6nBFh/Screen-Shot-2021-10-14-at-3-01-25-PM.png)
+![event page](https://i.ibb.co/F68zwhL/Screen-Shot-2021-11-04-at-7-10-49-PM.png)<br />
+![event page guests](https://i.ibb.co/pPh0pNz/Screen-Shot-2021-11-04-at-7-11-03-PM.png)
 * users can see events they're attending and any posts they've made on their profile pages – they can also edit or delete their own posts, or view other user profiles without edit/delete permissions <br />
-![profile](https://i.ibb.co/pJ6nBFh/Screen-Shot-2021-10-14-at-3-01-25-PM.png)
+![profile](https://i.ibb.co/1KCL2n1/Screen-Shot-2021-11-04-at-7-11-35-PM.png)<br />
+![edit post](https://i.ibb.co/jg7Gywf/Screen-Shot-2021-11-04-at-7-12-37-PM.png)
 * users can also browse a page of all featured cities <br />
-![all cities](https://i.ibb.co/pJ6nBFh/Screen-Shot-2021-10-14-at-3-01-25-PM.png)
+![all cities](https://i.ibb.co/Qd3PM3q/Screen-Shot-2021-11-04-at-7-09-47-PM.png)
 * finally, we've provided a quick look index of all events categorized by city <br />
-![all events](https://i.ibb.co/pJ6nBFh/Screen-Shot-2021-10-14-at-3-01-25-PM.png)
+![all events](https://i.ibb.co/GtxVV9h/Screen-Shot-2021-11-04-at-7-10-11-PM.png)<br />
 
 ### code: <br />
 * wayfarer is a django app
