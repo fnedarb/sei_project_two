@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %} 
+{% block content %}
+
+<div class="profile-page">
+    <div class="profile-header">
+        <div class="image-name-city">
+
+            <img src="{{profile.avatar}}" alt="user-image">
+            <h4>{{profile.user.first_name}} {{profile.user.last_name}}</h4>
+            <h6>{{profile.city.name}}, {{profile.city.state}} <br> Joined on {{profile.user.date_joined.month}}/{{profile.user.date_joined.day}}/{{profile.user.date_joined.year}}</h6>
+
+        </div>
+        {% for prof in currentprofile %}
+        {% if prof == profile %}
+        <div class="profile-edit-btn">
+            <a href="/profile/{{prof.pk}}/edit/">
+                <button id="edit-profile" class="btn">Edit Profile</button>
+            </a>
+        </div>
+        {% else %} 
+        {% endif %}
+        {% endfor %}
+    </div>
+    <!-- Edit Profile Modal -->
+    
+    <!-- <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form role="form" method="POST" action="">
+                    <input type="hidden" name="_token" value="">
+                    <div class="form-group">
+                        <label class="control-label">Name</label>
+                        <div>
+                            <input type="name" class="form-control input-lg" name="user" value="User's Name Here">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Current City</label>
+                        <div>
+                            <input type="name" class="form-control input-lg" name="city" value="User's Current City">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label">New Photo</label>
+                        <div>
+                            <input type="name" class="form-control input-lg" name="avatar" value="Photo upload go here">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button id="profilesavechanges" class="btn">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="profile-city-posts">
+        <div class="posts-add">
+            <h1 class="profile-city-post-title">Posts</h1>
+        </div>
+        <hr>
+        <div class="profile-city-posts-container">
+            {% for post in posts %}
+            <div class="profile-city-post-card">
+                <div class="profile-post-user-image-name">
+                    <img src="{{post.photo}}" alt="post-image">
+                </div>
+                <div class="profile-city-post-content">
+                    <div class="profile-post-title-action">
+                        <h6>{{post.title}}</h6>
+                        <div class="edit-del-btn">
+                            {% if post.profile == user %}
+                            <a href="/post/{{post.pk}}/edit/"><i id="post-edit" class="bi bi-pencil-fill"></i></a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#deletePost"><i id="post-delete" class="bi bi-trash-fill"></i></a>
+                            {% endif %}
+<!-- Delete Modal -->
+  <div class="modal fade" id="deletePost" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Confirm Deletion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this post?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <form action="{% url 'delete-post' post.pk  %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+                        </div>
+                    </div>
+                    <p class="profile-city-info">{{post.city.name}}, {{post.city.state}} - Posted {{post.date.month}}/{{post.date.day}}/{{post.date.year}}</p>
+                    <p class="profile-content-post">{{post.content}}</p>
+                </div>
+            </div>
+            {% empty %}
+            <h6 class="no-posts" id="no-posts-text">No Posts to Show</h6>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="events">
+        <h1 class="homepage-events">Events Attending</h1>
+        <hr>
+        <div class="top-events-container">
+            {% for event in events %}
+            <a href="{% url 'event-detail' event.pk %}">
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="{{event.image}}" alt="fun">
+                </div>
+                <div class="event-content">
+                    <div class="event-title-homepage">
+                        <h6 class="event-name-homepage">{{event.name}}</h6>
+                        <p>{{event.city.name}}, {{event.city.state}}</p>
+                    </div>
+                    <div class="event-info-homepage">
+                        <div class="person-date">
+                            <p id="person"><i class="bi bi-person"></i></p>
+                            <p class="person-count">{{event.users_attending.all.count}}</p>
+                        </div>
+                        <p id="date">{{event.date.month}}/{{event.date.day}}/{{event.date.year}}</p>
+                    </div>
+                </div>
+            </div>
+            </a>
+            {% empty %}
+            <h6 class="no-posts" id="not-attending-text">Not Attending Any Events</h6>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Another Change so I can push lol -->
+{% endblock %}

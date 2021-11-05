@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %} 
+{% block content %}
+
+<div class="all-content">
+    <div class="home-image">
+        <div class="home-image-text">
+            {% if user.is_authenticated %}
+            <h1>Where to, {{user.first_name}}?</h1>
+            {% else %} 
+            <h1>Where to?</h1>
+            {% endif %}
+            <div class="input searchbar">
+                <form action="{% url 'all-cities' %}" method="GET">
+                    <input type="text" class="form-control-lg search" name="search" placeholder="A new city awaits you..." aria-label="City Search" aria-describedby="basic-addon2" autocomplete="off">
+                    <div class="input">
+                        <input type="submit" class="btn bg-outline pb-4 searchbtn d-none" type="button">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="cities">
+        <div class="see-all-cities">
+            <div class="all-cities-header">
+                <h1 class="homepage-city">Top Cities</h1>
+            </div>
+            <div class="all-cities-see-all">
+                <a class="all-cities-button btn" href="{% url 'all-cities' %}">See All Cities</a>
+            </div>
+        </div>
+        <hr>
+        <div class="top-cities-container">
+            {% for city in cities %}
+            <a href="/city/{{city.pk}}">
+            <div class="city-card">
+                <div class="city-image">
+                    <img src="{{city.image}}" alt="{{city.name}}">
+                </div>
+                <div class="city-content">
+                    <h6 class="city-name-homepage">{{city.name}}</h6>
+                    <p>{{city.state}}</p>
+                </div>
+            </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    <br />
+    <div class="events">
+        <div class="see-all-events">
+            <div class="all-events-header">
+                <h1 class="homepage-city">Top Events</h1>
+            </div>
+            <div class="all-events-see-all">
+                <a class="all-events-button btn" href="{% url 'all-events' %}">See All Events</a>
+            </div>
+        </div>
+        <hr>
+        <div class="top-events-container">
+            {% for event in events %}
+            <a href="/event/{{event.pk}}">
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="{{event.image}}" alt="{{event.name}}">
+                </div>
+                <div class="event-content">
+                    <div class="event-title-homepage">
+                        <h6 class="event-name-homepage">{{event.name}}</h6>
+                        <p>{{event.city.name}}, {{event.city.state}}</p>
+                    </div>
+                    <div class="event-info-homepage">
+                        <div class="person-date">
+                            <p id="person"><i class="bi bi-person"></i></p>
+                            <p class="person-count">{{event.users_attending.all.count}}</p>
+                        </div>
+                        <p id="date">{{event.date.month}}/{{event.date.day}}/{{event.date.year}}</p>
+                    </div>
+                </div>
+            </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
