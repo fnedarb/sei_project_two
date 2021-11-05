@@ -729,6 +729,11 @@ nav {
     width: 100%;
 }
 
+.users-attending-container a {
+    color:#3E3E3E;
+    text-decoration: none;
+}
+
 .users-attending-card {
     width: 275px;
     height: 275px;
